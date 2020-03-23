@@ -1,0 +1,63 @@
+/*
+* 基础样式
+*
+* 全局式的基本样式
+*/
+/*
+* 预设 class 名
+* 以下class 名，请勿直接写样式，需要在某个前缀底下或同级样式、标签等下才能使用。
+* open hide show  T L M R r l S B left（左浮动） right(右浮动) 
+* 表示颜色 error success attention warn warning default
+*/
+
+
+/*
+* 通用样式
+*/
+.left {float: left;}
+.right {float: right;}
+.hide {display: none;}
+.push {margin: $commonMPwidth;}
+.pushT {margin-top: $commonMPwidth;}
+.pushR {margin-right: $commonMPwidth;}
+.pushB {margin-bottom: $commonMPwidth;}
+.pushL {margin-left: $commonMPwidth;}
+.noPush {margin: 0;}
+.pull {padding: $commonMPwidth;}
+.pullT {padding-top: $commonMPwidth;}
+.pullR {padding-right: $commonMPwidth;}
+.pullB {padding-bottom: $commonMPwidth;}
+.pullL {padding-left: $commonMPwidth;}
+.noPull {padding: 0;}
+.tcenter {text-align: center;}
+.tleft {text-align: left;}
+.tright {text-align: right;}
+.ttop {vertical-align: top;}
+.tmiddle {vertical-align: middle;}
+.tbottom {vertical-align: bottom;}
+hr {
+  border: solid $colorBorder;
+  border-width: 0 0 1px;
+}
+/*
+* 定位样式
+* 为复合词：position + 值。如：position: relative; 为：positive
+*/
+.positive {
+  position: relative;
+}
+.posilute {
+  position: absolute;
+}
+.posixed {
+  position: fixed;
+}
+
+
+
+
+
+
+
+
+

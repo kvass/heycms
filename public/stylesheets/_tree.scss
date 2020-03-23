@@ -1,0 +1,136 @@
+/*
+* 树形结构样式
+*
+* 分两种，一种能被放进某个容器里，另一种能像表格一样的表现
+*/
+
+$treeLineHeight : $heightBase + 10;
+$treeFocusLineColor : lighten($colorMain, 40%);
+
+.tree {
+  font-size: $fontSizeBase * 1.2;
+  ul {
+    li {
+      i,u,s,b {
+        &::before {
+          @extend .Icon::before;
+          margin-top: -4px;
+          border-radius: 50%;
+          height: 12px;
+          width: 12px;
+          background: $colorBg;
+        }
+      }
+      i,s {
+        position: absolute;
+        left: -6px;
+        width: 12px;
+      }
+      b {
+        float: left;
+        margin: 0 5px 0 -14px;
+        padding-left: 12px;
+        height: $treeLineHeight / 2;
+        border-bottom: 1px solid $colorBorder;
+      }
+      i::before {
+        content: "\e6af";
+      }
+      s,b {
+        // margin-top: -3px;
+        @extend .xuanzekuang;
+        &:before {
+          margin-top: -4px;
+        }
+        &.bufen {
+          @extend .bufenxuanze;
+        }
+        &.qianxian {
+          @extend .xuanze;
+        }
+      }
+      u {
+
+      }
+
+    }
+    & > li {
+      dl {
+        @include clearfix;
+        line-height: $treeLineHeight;
+        // border-bottom: 1px dotted $colorBorder;
+        position: relative;
+        -webkit-transition: all 0.2s;-moz-transition: all 0.2s;transition: all 0.2s;
+        dt {
+          float: right;
+          width: 120px;
+          height: $treeLineHeight;
+          text-align: center;
+          overflow: hidden;
+          &.options {
+            width: 220px;
+            visibility: hidden;
+          }
+        }
+        dd {
+          display: block;
+          padding-left: $commonMPwidth;
+          height: $treeLineHeight;
+          border-left: 1px solid $colorBorder;
+          @include ellipsis;
+        }
+        &:hover {
+          background: $treeFocusLineColor;
+          &>dt.options {
+            visibility: visible;
+          }
+        }
+        &.open {
+          i {
+            &:before {
+              content: "\e6ae";
+            }
+          }
+        }
+        &.selected {
+          & > dd {
+            font-weight: 700;
+          }
+        }
+      }
+      &.head {
+        border-bottom: 1px solid $colorBorder;
+        dl {
+          &:hover {
+            background: none;
+          }
+          dd {
+            text-align: center;
+            border: 0;
+          }
+        }
+        & ~ li {
+          padding-left: 8px;
+        }
+      }
+    }
+    ul {
+      padding-left: 20px;
+      &::before,&::after {
+        float: left;
+        margin: -1px 0 0 -20px;
+        content: '';
+        width: 21px;
+        height: 1px;
+        border-bottom: 1px solid $colorBorder;
+      }
+      &::after {
+        margin: 0 0 -1px -20px;
+      }
+    }
+  }
+}
+
+
+
+

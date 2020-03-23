@@ -1,0 +1,88 @@
+/*
+* 所有弹层需求
+*
+*/
+
+/*
+*/
+
+.overlay {
+  .addSstep {
+    margin: 30vh auto 0;
+    width: 38vw;
+    .aImg {
+      float: left;
+      width: 16vw;
+      height: 16vw;
+      // background: rgba($color: #000000, $alpha: .4)
+      border: 2px solid rgba($color: $colorY, $alpha: .8);
+      text-align: center;
+      a {
+        display: block;
+        height: inherit;
+        width: inherit;
+        font-size: $fontSizeBase;
+        color: $colorY;
+        i {
+          display: inline-block;
+          padding: 4vw 0 1vw;
+          font-size: $fontSizeBase * 6;
+          color: $colorY;
+          @extend .Icon;
+          @extend .touxian;
+        }
+        img {
+          display: block;
+          width: inherit;
+          height: inherit;
+        }
+      }
+    }
+    .form {
+      margin: .5vw 0 0 18vw;
+      // width: 40vw;
+      color: $colorY;
+      li {
+        padding: .5vw 0;
+        height: 3.8vw;
+        label {
+          display: none;
+        }
+        input {
+          padding: 1vw 1vw;
+          width: 20vw;
+          height: 3vw;
+          border: 0;
+          letter-spacing: 1px;
+        }
+      }
+    }
+    dt {
+      overflow: hidden;
+    }
+    dd {
+      margin: 10vw -5vw;
+      display: flex;
+      justify-content: flex-end;
+      button {
+        height: 3vw;
+        width: 8vw;
+        // background: $colorY;
+        border: 0;
+        line-height: 3vw;
+        color: $colorMain;
+        cursor: pointer;
+        @include buttonColor($colorY);
+      }
+      a {
+        margin-right: 2vw;
+        padding: 0 1vw;
+        height: 3vw;
+        line-height: 3vw;
+        font-size: $fontSizeBase;
+        color: $colorY;
+        border: 2px solid #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+/*
+* 皮肤样式
+*
+* 全局式的皮肤样式
+* 即原来布局不变，只更换跟主题相关的颜色
+* 
+*/
+
+$skin :
+(#000    #000    #fff    none    #fdce03 #000000 #fdce03 #000)
+(#fdce03 #000    #fff    #333    #fff    none    #333    none    #333    none    #000    #000    #fdce03 #000    #fff)
+(#3e3c3d #333    #fff    #333    #fff    none    #333    none    #333    none    #000    #000    #ffdb61 #000    #fff),
+(#01b98d #047b5d #1bc59e #047b5d none    #e6ffff #01b98d    none #000)
+(#353535 #222 #fff    #fff    #fff none    #fff    #fff    #333    none    #fff    #000    #0fc2a0 #0fc29f #fff)
+(no      no      #fff    #333    #fff    none    #fff    none    #333    none    #fff    #000    #0fc2a0 #000    #fff),
+(#fff    lighten(#d9d9d9, 8%) #0f9279 none    #fdce03 #000    #fdce03 #000)
+(#353535 #222 #fff    #fff    #fff none    #fff    #fff    #333    none    #fff    #000    #0fc2a0 #0fc29f #fff)
+(no      no      #fff    #333    #fff    none    #fff    none    #333    none    #fff    #000    #0fc2a0 #000    #fff)
+;
+/* >1    >2      >3      >4      >5      >6      >7      >8      >9      >10     >11     >12     >13     >14     >15   */
+/*
+* 1top条背景、2横border、3竖border、4link、5-hoverBG、6-hoverText、7展开下面的链接、8-hoverBg、9-hover
+* 1左侧主导航背景、2收缩Bg、3-Text、4-hoverBg、5-hoverText、6分类Bg、7-Txt、8-hoverBg、9-hoverTxt、10子类背景、11链接、12-hoverBg、13-hoverTxt、14选中Bg、15-Txt
+* 1左侧副导航背景、2标识BG、3-Text、4-hoverBG、5-hoverText、6分类Bg、7-Txt、8-hoverBg、9-hoverTxt、10子类背景、11链接、12-hoverBg、13-hoverTxt、14选中Bg、15-Txt
+*/
+$skinNun : 2;
+$skinNun : 1 !default;
+
+
+
+

@@ -1,0 +1,133 @@
+/*
+* 分页样式
+*
+* 全站的分页样式
+* 分为三种，全元素、单分页、简单上、下页
+*/
+
+.qPages {
+  @include clearfix;
+  padding: $commonMPwidth;
+  letter-spacing: -4px;
+  line-height: $heightBase;
+  font-size: $fontSizeBase * 1.2;
+  text-align: center;
+  background: $colorBg;
+  .right {
+    float: right;
+    letter-spacing: 0;
+    text-align: left;
+    height: $heightBase + 2;
+  }
+  .left {
+    float: left;
+    letter-spacing: 0;
+    samp {
+      padding: 0 5px;
+    }
+  }
+  .qNumbers {
+    @include inline-block;
+    a {
+      @include inline-block;
+      padding: 0 $commonMPwidth;
+      letter-spacing: 0;
+      margin-left: -1px;
+      border: 1px solid $colorBorder;
+      color: $colorMain;
+      line-height: $heightBase;
+      &:hover {
+        position: relative;
+        border-color: lighten($colorMain, 20%);
+        color: $colorMain;
+      }
+      &:active {
+        background: #666;
+        border: 1px solid #666;
+        color: #333;
+      }
+      &.current,&.current:hover {
+        position: relative;
+        border-color: $colorMain;
+        color: $colorBg;
+        background: $colorMain;
+      }
+    }
+  }
+  .xPage {
+    @include inline-block;
+    letter-spacing: 0;
+    margin-left: 5px;
+    width: 80px;
+    border: 1px solid $colorBorder;
+    height: $heightBase + 2;
+    color: #666;
+    overflow: hidden;
+    input,button {
+      height: $heightBase;
+      line-height: $heightBase;
+      display: none;
+      border: 0;
+      vertical-align: top;
+    }
+    input {
+      width: 40px;
+      text-align: center;
+      outline: none;
+      box-shadow: none;
+      &:focus {
+        outline: none;
+        border: 0;
+      }
+    }
+    button {
+      width: 32px;
+      float: right;
+      border: 0;
+      border-left: 1px solid $colorBorder;
+      background: $colorBg;
+      cursor: pointer;
+      @extend .Icon::before;
+      &::before {
+        content: "\e68b";
+        width: 32px;
+      }
+      &:hover {
+        background: $colorMain;
+        border-left-color: $colorMain;
+        &::before {
+          color: $colorBg;
+        }
+      }
+      &:active {
+        background: #666;
+        border-left-color: #666;
+        &::before {
+          color: #333;
+        }
+      }
+    }
+    p {
+      padding: 0 15px;
+      color: #999;
+    }
+    &:hover,.showPageSearch {
+      border-color: lighten($colorMain, 20%);
+      overflow: hidden;
+      background: $colorBg;
+      input,button {
+        @include inline-block;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+

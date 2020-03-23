@@ -1,0 +1,731 @@
+/*
+* 通用页面样式
+*
+* 归纳现有页面的应用场景，实例化各种应用块
+*
+*/
+
+
+// 页面刷新loading
+.pageLoader.exploader {
+  margin: 0 0 -40px;
+  position: relative;
+  z-index: 5;
+  // top: 50px;
+  width: 100%;
+  // display: block;
+  q {
+    // padding: 3px 5px;
+  }
+  .alertCon {
+    padding: 8px 10px;
+    overflow: hidden;
+  }
+  &.success {background: $colorGreen;}
+  &.error {background: $colorRed;}
+  &.warning {background: $colorOrange;}
+  &.attention {background: $colorBlue;}
+  .success {
+    background: $colorGreen;
+    color: $colorBg;
+    border: 0;
+    &:before,&.close:before {
+      color: $colorBg;
+    }
+  }
+  .error {
+    background: $colorRed;
+    color: $colorBg;
+    border: 0;
+    &:before,&.close:before {
+      color: $colorBg;
+    }
+  }
+  .warning {
+    background: $colorOrange;
+    color: $colorBg;
+    border: 0;
+    &:before,&.close:before {
+      color: $colorBg;
+    }
+  }
+  .attention {
+    background: $colorBlue;
+    color: $colorBg;
+    border: 0;
+    &:before,&.close:before {
+      color: $colorBg;
+    }
+  }
+  h4 {
+    @include inline-block;
+    margin-right: 15px;
+    font-size: $fontSizeBase * 1.4;
+  }
+  &.close {
+  }
+}
+
+//页面级标题
+h1.pageTitle {
+  padding: $commonMPwidth * 1.5 $commonMPwidth $commonMPwidth * 1.5;
+  font-size: $fontSizeBase * 1.6;
+  color: #333;
+  line-height: 24px;
+  font-weight: $fontWeight;
+}
+h1.pageTitle samp,
+h1.pageTitle .small {
+  padding: 0 5px;
+  font-size: $fontSizeBase * 1.2;
+  color: $colorGray;
+  vertical-align: middle;
+}
+h1.pageTitle i {
+  float: right;
+  cursor: pointer;
+  &:before {
+    @extend .Icon::before;
+    @extend %question::before;
+    color: $colorGray;
+  }
+}
+
+//** 代客下单
+//* 网点与地址
+.block hr + h4 {
+  margin-top: $commonMPwidth * 2;
+  margin-bottom: $commonMPwidth;
+}
+h4 .small {
+  font-size: $fontSizeBase * 1.2;
+}
+.pNadd {
+  padding: 0!important;
+  dl {
+    margin-top: $commonMPwidth;
+    font-size: $fontSizeBase * 1.2;
+    @include clearfix;
+    dt {
+      float: left;
+      padding: $commonMPwidth * 2 0;
+      width: 190px;
+      text-align: center;
+      background-color: $colorBgSec;
+      div {
+        h2 {
+          font-size: $fontSizeBase * 2.5;
+          line-height: $heightBase * 1.5;
+          @include ellipsis;
+        }
+        p {
+          margin-bottom: $commonMPwidth * 1.5;
+          color: $colorGray;
+          @include ellipsis;
+        }
+      }
+    }
+    dd {
+      margin: 0 $commonMPwidth $commonMPwidth 190px;
+      min-height: 170px;
+      border: 1px solid $colorBorder;
+      ul {
+        padding: $commonMPwidth;
+        li {
+          margin: 1px 0;
+          overflow: hidden;
+          // width: 800px;
+          padding: 5px $commonMPwidth;
+          cursor: pointer;
+          h3,h4,h5,h6 {
+            @include resetMP;
+            line-height: $heightBase;
+            font-weight: normal;
+          }
+          h3,h4 {
+            float: left;
+            width: 60px;
+          }
+          h4 {
+            width: 140px;
+            letter-spacing: 1px;
+          }
+          h5 {
+            color: $colorGray;
+            @include ellipsis;
+          }
+          h6 {
+            float: right;
+            display: none;
+            a {
+              margin: 0 5px;
+            }
+          }
+          &:last-child {
+            padding: 10px $commonMPwidth 5px;
+            border: none;
+          }
+          &.current,&:hover {
+            padding: 3px $commonMPwidth - 2;
+            border: 2px solid $colorMain;
+            &:last-child:hover {
+              padding: 10px $commonMPwidth 5px;
+              border: none;
+            }
+            h6 {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.Xspace {
+  &>input[type="text"] {
+    &.L {
+      padding: 21px 10px;
+    }
+  }
+  &.L {
+    margin: $commonMPwidth;
+    padding: $commonMPwidth * 4;
+  }
+  &.M {
+    margin: $commonMPwidth;
+    padding: $commonMPwidth * 3;
+  }
+  &.S {
+    margin: $commonMPwidth;
+    padding: $commonMPwidth * 2;
+  }
+}
+
+//* 添加商品
+.mixinpage {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  .treeArea {
+    position: absolute;
+    padding: $commonMPwidth * 2;
+    width: 300px;
+    height: 100%;
+    overflow: auto;
+    border: 1px solid $colorBorder;
+    border-right: 0;
+    .tree {
+      height: 100%;
+      transition: width 0.2s;
+      dd {
+        cursor: pointer;
+      }
+      dt {
+        margin: 9px 0 0 5px;
+        width: auto;
+        min-width: $heightBase;
+        height: $heightBase - 8;
+        line-height: $heightBase - 10;
+        padding: 0 4px;
+        font-size: $fontSizeBase * 0.9;
+        border-radius: 14px;
+        border: 1px solid $colorBorder;
+        color: $colorMain;
+      }
+      dl {
+        &.selected {
+          dd {
+            color: $colorMain;
+          }
+        }
+      }
+    }
+  }
+  .prolist {
+    margin-left: 300px;
+    padding: $commonMPwidth * 2 - 5px;
+    overflow: hidden;
+    height: 100%;
+    transition: margin 0.2s;
+    dl {
+      float: left;
+      position: relative;
+      margin: 5px;
+      width: 222px;
+      height: 300px;
+      border: 1px solid $colorBorder;
+      overflow: hidden;
+      dt {
+        display: block;
+        padding: 5px;
+        width: 100%;
+        height: 180px;
+        &:after {
+          position: absolute;
+          content: "";
+          display: block;
+          left: 0;
+          bottom: -100%;
+          background: #000;
+          width: 100%;
+          height: 100%;
+          transition: opacity 0.2s, bottom 0.2s;
+          opacity: 0;
+        }
+      }
+      dd {
+        display: block;
+        padding: 5px;
+        h6 {
+          margin-bottom: 10px;
+          font-size: $fontSizeBase * 1.2;
+          line-height: $heightBase - 4;
+          height: 40px;
+          overflow: hidden;
+        }
+        p {
+          padding: 0;
+        }
+        input,button {
+          margin-top: 5px;
+          width: 100%;
+        }
+        label:first-child {
+          input {
+            margin-top: 0;
+          }
+        }
+        &.hoverArea {
+          display: block;
+          position: absolute;
+          padding: 5px;
+          padding: $commonMPwidth;
+          bottom: -100%;
+          width: 100%;
+          background: #fff;
+          overflow: hidden;
+          // @include transition(height, $anTime);
+          -webkit-transition: bottom 0.2s;-moz-transition: bottom 0.2s;transition: bottom 0.2s;
+        }
+      }
+      &.hover {
+        dt {
+          &:after {
+            bottom: 0;
+            opacity: $opacity;
+          }
+        }
+        .hoverArea {
+          bottom: 0;
+        }
+      }
+    }
+  }
+  .slideBtn {
+    position: absolute;
+    margin-left: calc(300px - 14px);
+    transition: margin 0.2s;
+    top: 220px;
+    width: 15px;
+    height: 45px;
+    border: 1px solid $colorBorder;
+    border-right: 0;
+    background: #fff;
+    z-index: 9;
+  }
+  &.pullback {
+    .treeArea {
+      padding: $commonMPwidth * 2 0;
+      width: 45px;
+      .tree {
+        display: none;
+      }
+    }
+    .slideBtn {
+      margin-left: calc(45px - 14px);
+    }
+    .prolist {
+      margin-left: 45px;
+    }
+  }
+}
+
+.patternPicList {
+  @include clearfix;
+  padding: $commonMPwidth * 2 - 5px;
+  dl {
+    float: left;
+    margin: 5px;
+    overflow: hidden;
+    border: 1px solid $colorBorder;
+    font-size: $fontSizeBase * 1.2;
+    background: $colorBg;
+    dt {
+      padding: 8px;
+      width: 100%;
+      height: 100%;
+      .img {
+        display: block;
+        width: 100%;
+        img {
+          display: block;
+          margin: auto;
+          max-width: 100%;
+          max-height: 100%;
+          line-height: 1%;
+        }
+      }
+      h6 {
+        line-height: $heightBase;
+        text-align: center;
+        @include ellipsis;
+      }
+      &:after {
+        content: '';
+        margin-left: -8px;
+        display: block;
+        transition: margin 0.2s, opacity 0.2s;
+        height: calc(100% + 8px + 8px);
+        width: calc(100% + 8px + 8px);
+        background: #000;
+        opacity: 0;
+      }
+    }
+    dd {
+      background: $colorBgSec;
+      letter-spacing: -4px;
+      * {
+        letter-spacing: 0;
+      }
+    }
+    dd.hoverArea {
+      transition: margin 0.2s;
+      i {
+        display: block;
+        width: 18px;
+        height: 18px;
+        border-radius: $borderRadius;
+        background: #fff;
+        border: 2px solid $colorMain;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s;
+        overflow: hidden;
+        text-align: center;
+        font-size: 10px;
+        &:hover {
+          border-width: 1px;
+        }
+        &:active {
+          border-color: $colorBorder;
+          background: $colorBgSec;
+        }
+      }
+    }
+    &.hover {
+      dt {
+        h6 a {
+          color: $colorGray;
+        }
+        &:after {
+          margin-top: -100%;
+          opacity: $opacity;
+        }
+      }
+      dd.hoverArea {
+        position: relative;
+        i {
+          position: absolute;
+          left: 4px;
+          opacity: 1;
+          &.selected {
+            background: $colorMain;
+            color: #fff;
+            &:before {
+              @extend .Icon::before;
+              height: 14px;
+              content: '\e62d';
+              vertical-align: top;
+              line-height: 15px;
+            }
+            &:hover {
+              border-width: 2px;
+              background: #fff;
+              color: $colorMain;
+            }
+            &:active {
+              background: $colorBgSec;
+              border-color: $colorBorder;
+              color: $colorGray;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// 品牌列表
+.brandlist {
+  dl {
+    width: 140px;
+    height: 170px;
+    dt {
+      h6 {
+        padding-top: 3px;
+        height: calc(100% - 90px);
+      }
+      .img {
+        height: 90px;
+      }
+    }
+    dd {
+      margin-top: -36px;
+      padding: 0 8px;
+      height: 36px;
+      line-height: 36px;
+      &.hoverArea {
+        margin-top: 0;
+        a {
+          margin: 0 12px 0 0;
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+    }
+    &.hover {
+      dt {
+        &:after {
+          margin-top: -160px;
+        }
+      }
+      dd.hoverArea {
+        margin-top: -36px;
+        i {
+          top: -128px;
+        }
+      }
+    }
+  }
+}
+//图片资源
+.picResource {
+  dl {
+    width: 138px;
+    height: 174px;
+    dt {
+      h6 {
+        padding-top: 3px;
+        height: calc(100% - 90px);
+      }
+      .img {
+        height: 120px;
+      }
+    }
+    dd {
+      margin-top: -36px;
+      padding: 0 8px;
+      height: 36px;
+      line-height: 36px;
+      &.hoverArea {
+        margin-top: 0;
+        a {
+          margin: 0 12px 0 0;
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+    }
+    &.hover {
+      dt {
+        &:after {
+          margin-top: -160px;
+        }
+      }
+      dd.hoverArea {
+        margin-top: -36px;
+        text-align: right;
+        i {
+          top: -132px;
+        }
+      }
+    }
+  }
+}
+
+// 实名认证
+.format01 {
+  @include clearfix;
+  padding: 0 $commonMPwidth $commonMPwidth;
+  dl {
+    float: left;
+    width: 50%;
+    border: 1px solid $colorBorder;
+    background: $colorBg;
+    text-align: center;
+    &:last-child {
+      width: calc(50% + 1px);
+      margin-left: -1px;
+    }
+    dt {
+      padding-top: $commonMPwidth * 2;
+      img {
+
+      }
+      h2 {
+        margin: $commonMPwidth;
+        font-size: $fontSizeBase * 2;
+        color: $colorMain;
+      }
+      p {
+        display: block;
+        padding: 0 $commonMPwidth * 2 $commonMPwidth * 2;
+        font-size: $fontSizeBase * 1.2;
+        color: $colorGray;
+        line-height: $heightBase;
+        height: 98px;
+        overflow: hidden;
+      }
+      .hoverArea {
+        display: block;
+        margin-top: 0px;
+        height: 0;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0);
+        transition: margin $anTime, height $anTime, background $anTime;
+      }
+      &:hover {
+        .hoverArea {
+          margin-top: -98px;
+          height: 98px;
+          background: rgba(0, 0, 0, $opacity);
+          .qBtn {
+            margin-top: 28px;
+          }
+        }
+      }
+    }
+    dd {
+      border-top: 1px solid $colorBorder;
+      height: 16px;
+      overflow: hidden;
+      transition: height $anTime, background $anTime, transform $anTime;
+      background: $colorBg;
+      .toggleBtn {
+        display: block;
+        height: 16px;
+        text-align: center;
+        &:before {
+          @extend .Icon::before;
+          content: "\e78c";
+          line-height: 16px;
+          height: 16px;
+          font-size: 9px;
+          vertical-align: top;
+          transition: transform $anTime;
+        }
+      }
+      h4 {
+        padding: 25px;
+        text-align: left;
+        font-size: $fontSizeBase * 1.4;
+      }
+      ul {
+        li {
+          margin: 0 auto;
+          padding: 25px 0;
+          width: 520px;
+          text-align: left;
+          letter-spacing: -4px;
+          vertical-align: top;
+          i {
+            @include inline-block;
+            vertical-align: top;
+            margin: 0 40px;
+            letter-spacing: 0;
+            text-align: center;
+            font-size: $fontSizeBase * 7;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            color: $colorBg;
+            border-radius: 40px 40px 0 40px;
+            background: $colorMain;
+          }
+          tt {
+            @include inline-block;
+            letter-spacing: 0;
+            width: 200px;
+            height: 168px;
+            text-align: center;
+            border: 1px solid $colorBorder;
+            background: $colorBg;
+            font-size: $fontSizeBase * 1.2;
+            img {
+              display: block;
+              margin: auto;
+              max-width: 100%;
+              max-height: 128px;
+            }
+            p {
+              height: 40px;
+              line-height: 40px;
+              border-top: 1px solid $colorBorder;
+              color: $colorGray;
+            }
+          }
+          &.yyzz {
+            tt {
+              height: 178px;
+            }
+            tt {
+              img {
+                max-height: 138px;
+              }
+            }
+          }
+          &.pIdPhoto {
+            tt {
+              height: 188px;
+            }
+            tt {
+              img {
+                max-height: 148px;
+              }
+            }
+          }
+        }
+      }
+      .qBtn.L {
+        margin: 25px 25px 50px;
+        width: 200px;
+      }
+      &.open {
+        background: $colorBgSec;
+        height: auto;
+        .toggleBtn {
+          &:before {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

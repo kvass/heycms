@@ -1,0 +1,425 @@
+/*
+* 表格样式
+*
+* 全局式的表格样式
+*/
+$tableColor : #f1f1f1 #f7f7f7;
+$tdBg : $colorBg #f1f1f1 #f1f1f1 #e3eede #72c328;
+//正常单元格背景、even背景、hover背景、选中背景、选中边框
+
+.table {
+  border-collapse: collapse;
+  border-spacing: 2px;
+  border-top: 1px solid $colorBorder;
+  width: 100%;
+  font-size: 14px;
+  line-height: 22px;
+  font-size: 12px;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+    tr {
+      border-bottom: 1px solid $colorBorder;
+      background: $colorBg;
+      th {
+        padding: 8px 3px;
+        // background: #f1f1f1;
+      }
+      td {
+        padding: 18px 3px;
+        // border-bottom: 1px solid $colorBorder;
+        vertical-align: middle;
+        &.tdlineT {
+          border-top: 1px solid $colorBorder;
+        }
+        &.tdlineR {
+          border-right: 1px solid $colorBorder;
+        }
+        &.tdlineB {
+          border-bottom: 1px solid $colorBorder;
+        }
+        &.tdlineL {
+          border-left: 1px solid $colorBorder;
+        }
+        &.tdlineNone {
+          border: 0;
+        }
+      }
+      &.trlineNone {
+        border: 0;
+      }
+      .checkTd {
+        padding: 8px 0;
+        padding-left: 0;
+        width: 8px;
+        overflow: hidden;
+        input[type="checkbox"] {
+          position: absolute;
+          z-index: -999;
+          left: -9999px;
+          height: 1px;
+          width: 1px;
+          background: transparent;
+        }
+      }
+      &.selected {
+        td {
+          background: nth($tdBg, 4);
+          &.checkTd {
+            border-left: 8px solid nth($tdBg, 5);
+          }
+        }
+      }
+      .ghost {
+        display: none;
+        visibility: hidden;
+      }
+      &:hover {
+        td {
+          background: nth($tdBg, 3);
+        }
+        .ghost {
+          @include inline-block;
+        }
+      }
+    }
+  }
+  &.orderTable {
+    tr {
+      td {
+        vertical-align: top;
+        &.goodsItem {
+          text-align: left;
+          padding-left: 20px;
+          tt {
+            float: left;
+            @extend %picS;
+            border: 0;
+          }
+          div {
+            display: block;
+            margin: 0 0 0 66px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 16px;
+            height: 32px;
+            text-align: left;
+            overflow: hidden;
+          }
+          p {
+            margin: 1px 0 0 66px;
+            height: 22px;
+            line-height: 22px;
+            // @include ellipsis;
+            overflow: hidden;
+            label {
+              display: inline-block;
+              margin-right: 3px;
+              padding: 9px 8px 7px;
+              border-radius: $borderRadius;
+              text-align: center;
+              vertical-align: baseline;
+              line-height: 1px;
+              background: #f1f1f1;
+              color: #333;
+            }
+          }
+          &.onlyPic {
+            tt {
+              margin: 3px;
+            }
+          }
+          a,&:visited {
+            color: $colorMain;
+            &:hover {
+              color: $colorMain;
+            }
+            &:active {
+              color: $colorGray;
+            }
+          }
+        }
+        &.priceTd {
+          text-align: center;
+          b {
+            font-size: 18px;
+            color: #f60;
+          }
+          p {
+          }
+        }
+        .options {
+          padding-left: $commonMPwidth;
+          text-align: left;
+          a {display: block;}
+        }
+      }
+      &:hover {
+        td {
+          background: none;
+        }
+      }
+      &.tbodyHead {
+        text-align: left;
+        background: nth($tableColor, 2);
+        label {
+          color: #999;
+        }
+        dl {
+          dd {display: none;}
+        }
+        .orderMinfo {
+          padding: 0 20px;
+          b {
+          }
+          .orNumber {
+            a,b {
+              font-weight: 700px;
+            }
+            b {
+              color: #333;
+            }
+          }
+          .orTime {
+            margin-left: 20px;
+            color: #999;
+          }
+        }
+        .status {
+          float: right;
+          letter-spacing: -4px;
+          li {
+            @include inline-block;
+            letter-spacing: 0;
+            label {
+              margin-left: 1px;
+              padding: 7px 20px;
+              background: $colorGray;
+              color: $colorBg;
+              &.success {
+                background: $colorGreen;
+              }
+              &.progress {
+                background: $colorRed;
+              }
+            }
+            &:first-child label {
+              border-radius: $borderRadius 0 0 $borderRadius;
+            }
+            &:last-child label {
+              border-radius: 0 $borderRadius $borderRadius 0;
+            }
+            &:only-child label {
+              border-radius: $borderRadius;
+            }
+            .slideArea {
+              display: none;
+              position: absolute;
+              right: 0;
+              top: 32px;
+              padding: 10px;
+              border: 1px solid #ccc;
+              box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+              background: $colorBg;
+              width: 300px;
+              text-align: right;
+              s {
+                display: block;
+                font-size: 14px;
+                text-decoration: none;
+                font-weight: 700;
+                color: #333;
+              }
+              p {
+                color: #666;
+              }
+              &:before, &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: -16px;
+                right: 30px;
+                border-style: solid;
+                border-width: 8px;
+                border-color: transparent transparent #ccc transparent;
+              }
+              &:after {
+                top: -15px;
+                border-color: transparent transparent $colorBg transparent;
+              }
+            }
+            &:hover {
+              position: relative;
+              .slideArea {
+                display: block;
+              }
+            }
+          }
+        }
+        .orderParam {
+          margin-top: 10px;
+          padding: 10px 10px 0;
+          border-top: 1px solid #f1f1f1;
+          li {
+            @include inline-block;
+            margin-right: 28px;
+            s {
+              color: #666;
+              text-decoration: none;
+            }
+            b {
+              display: inline;
+              margin: 0 2px;
+              padding: 2px 4px;
+              line-height: 1px;
+              font-weight: normal;
+              background: $colorRed;
+              border-radius: $borderRadius;
+              color: $colorBg;
+            }
+          }
+        }
+      }
+      &.moreLine {
+        td {
+          // background: nth($tableColor, 2);
+          a {
+            display: block;
+            text-align: center;
+            color: #999;
+            &:hover {
+
+            }
+          }
+        }
+      }
+      &.emptyLine {
+        border: 0;
+        border-bottom: 1px solid $colorBorder;
+        height: 5px;
+        background: $colorBgSec;
+        td {
+          padding: 0;
+          border: 0;
+        }
+      }
+    }
+  }
+}
+.tableToolbar {
+  @include clearfix;
+  padding: $commonMPwidth;
+  height: $heightBase + $commonMPwidth * 2 + 2;
+  background: $colorBg;
+  border: 1px solid $colorBorder;
+  border-width: 1px 0;
+  dt {
+    float: right;
+    letter-spacing: -4px;
+    * {letter-spacing: 0;}
+    .tableOption {
+      float: right;
+      position: relative;
+      font-size: $fontSizeBase;
+      & > a {
+        @include inline-block;
+        @include buttonSize(0px, 0px);
+        border: 1px solid $colorBorder;
+        &::before {
+          @extend .Icon::before;
+          width: $heightBase;
+          // height: $heightBase;
+          // line-height: $heightBase;
+          color: $colorMain;
+          content: '\e602';
+          font-size: $fontSizeBase * 1.8;
+          -webkit-transform: translateX(0px);-moz-transform: translateX(0px);transform: translateX(0px);-webkit-transition: -webkit-transform 0.2s;-moz-transition: -moz-transform 0.2s;transition: transform 0.2s;
+        }
+      }
+      ul {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: $heightBase + 1px;
+        padding: 5px 2px;
+        width: 120px;
+        background: $colorBg;
+        border: 1px solid $colorBorder;
+        &::before {
+          float: right;
+          margin: -7px -2px 0 0;
+          @extend .Icon::before;
+          height: 2px;
+          background: $colorBg;
+          width: $heightBase;
+          content: "";
+        }
+        li {
+          label {
+            display: block;
+            line-height: $heightBase;
+            cursor: pointer;
+            input[type='checkbox'] {
+              @extend %inputHide;
+            }
+            &::before {
+              @extend .Icon::before;
+              content: "";
+              width: 20px;
+            }
+            &.checked {
+              &::before {
+                content: "\e6b1";
+                color: $colorGreen;
+              }
+            }
+          }
+        }
+        &.show {
+          display: block;
+        }
+      }
+      &.open {
+        & > a {
+          position: relative;
+          border-bottom: 0;
+          height: $heightBase + 1;
+          z-index: 8;
+          border-radius: $border-radius $border-radius 0 0;
+          background: $colorBg;
+          &::before {
+            transform:rotate(90deg);-ms-transform:rotate(90deg);-moz-transform:rotate(90deg);-webkit-transform:rotate(90deg);-o-transform:rotate(90deg);
+          }
+        }
+        & > ul {
+          // display: block;
+        }
+      }
+    }
+  }
+  dd {
+    padding: 0;
+    letter-spacing: -4px;
+    * {letter-spacing: 0;}
+    & > .qBtn {
+      margin-right: 8px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

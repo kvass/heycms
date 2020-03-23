@@ -1,0 +1,60 @@
+/*
+* 设置 字体、颜色及其他主要 变量
+*
+*/
+
+/*
+* 预设 class 名
+* 以下class 名，请勿直接写样式，需要在某个前缀底下或同级样式、标签等下才能使用。
+* open hide show  T L M R r l S B left（左浮动） right(右浮动) 
+* 表示颜色 error success attention warn warning default
+*/
+
+/*
+* 命名空间 (如： .qm or .qianmi)
+*
+*/
+$namespace: '.qm' !default; //设置起作用的全局样式开关
+
+$border-radius : 2px;
+
+/*
+* 默认变量
+*/
+
+
+$fontWeight: 300 !default;             //默认字宽
+$height: 40px !default;                //全局行高
+
+$commonMPwidth : 15px !default;        //全局内边距、外边距的值
+$heightBase : 26px !default;           //全局的单行高度、行高
+$fontSizeBase : 16px !default;         //全局文字的基数值
+$borderRadius : 0 !default;            //圆距形的角度
+
+// $colorMain : rgba(57,203,116,1) !default;         //系统的主颜色
+$colorMain : rgba(78,217,123,1) !default;         //系统的主颜色
+// $colorMain : rgba(28,132,203,1) !default;         //系统的主颜色
+$colorSecond : rgba(251,207,87,1) !default;       //系统的次颜色或辅助色
+$colorBorder : #d9d9d9 !default;       //系统基础的线条颜色
+$colorBg : #fff !default;              //系统基础的全体背景色————可以设置为 背景图片
+$colorBgSec : #f3f4f5 !default;        //系统基础的次一级背景色
+$colorFont : #222 !default;            //系统基础的字体色
+$colorGreen : #a3ce19 !default;        //默认绿色
+$colorRed : #e74856 !default;          //默认红色
+$colorOrange : #f79816 !default;       //默认橙色
+$colorBlue : #00b9f2 !default;         //默认蓝色
+$colorGray : #7c7c7c !default;         //默认灰色
+$colorY: rgba(255,255,255, 1) !default;//默认白色
+$anTime : 0.2s !default;              //默认动画时间
+$opacity : 0.4 !default;              //默认通用庶层透明度
+$fontFamily: "Helvetica Neue Light", "Helvetica Neue", Helvetica, "Microsoft Yahei", "WenQuanYi Micro Hei", "Lucida Grande", sans-serif  !default;
+
+
+
+
+/*
+* 能用尺寸
+* --未定义
+*/
+$sizes: (giant 1.75) (jumbo 1.5) (large 1.25) (normal 1) (small .75) (tiny .6) !default;
+$sizes: (giant 1.75) (jumbo 1.5) (large 1.25) (normal 1) (small .75) (tiny .6) !default;

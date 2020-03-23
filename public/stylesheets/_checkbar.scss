@@ -1,0 +1,269 @@
+/*
+* 表单样式
+*
+* 全局式的表单样式
+*/
+
+
+$label-wdith: 180px;
+$line-height: 30px;
+$input-color : #333;
+$input-bg : $colorBg;
+$input-border-focus : $colorMain;
+$input-color-placeholder : #ccc;
+$input-bg-disabled : #f1f1f1;
+$columnCount : 2 3 4 5 6;
+$border-width : 1px;
+$count-width : 120px;
+$liMargin : 2px;
+
+
+.checkbar {
+  // margin: 20px;
+  position: relative;
+  &>ul {
+    padding: ($commonMPwidth - $liMargin) ($commonMPwidth + 100px) ($commonMPwidth - $liMargin) ($commonMPwidth - $liMargin);
+    letter-spacing: -4px;
+    background: $colorBgSec;
+    -webkit-transition: height 0.2s;-moz-transition: height 0.2s;transition: height 0.2s;
+    & > li {
+      display: inline-block;
+      margin: $liMargin;
+      font-size: $fontSizeBase * 1.2;
+      border: $border-width solid #dcdcdc;
+      background: $colorBg;
+      width: $count-width;
+      height: $line-height;
+      letter-spacing: 0;
+      vertical-align: middle;
+      &:hover,&.thisFocus {
+        border-color: lighten($colorMain, 25%);
+      }
+      &.thisFocus {
+        box-shadow: 0 0 5px lighten($colorMain, 30%) inset;
+        background: lighten($colorMain, 75%);
+      }
+      &.selut,
+      &.labut,
+      &.inputdb {
+        letter-spacing: -4px;
+        width: $count-width * 2 + 10;
+        * {
+          letter-spacing: 0;
+        }
+        input {
+          width: 59.5%!important;
+          height: $line-height - 4px;
+          line-height: $line-height - 4px;
+        }
+      }
+      .Vselect {
+        width: ($count-width * .8) - 11;
+        min-width: auto;
+        border-width: 0 1px 0 0;
+        line-height: $line-height - $border-width - $border-width;
+        height: $line-height - $border-width - $border-width;
+        dd {
+          width: ($count-width * .8) - 10;
+          min-width: auto;
+        }
+        &.column2,
+        &.column3 {
+          dd {
+            min-width: $count-width * 2 + 8;
+            overflow: hidden;
+            a {
+              float: left;
+              padding-top: 0;
+              padding-bottom: 0;
+              letter-spacing: 0;
+              vertical-align: top;
+              width: $count-width - $border-width;
+              line-height: $line-height - $border-width - $border-width - 2;
+            }
+          }
+        }
+        &.column3 {
+          dd {
+            width: $count-width * 3 + 8;
+            a {
+              width: $count-width;
+            }
+          }
+        }
+      }
+      &.onlect {
+        .Vselect {
+          width: $count-width;
+          border: 0;
+          dd {
+            width: $count-width;
+          }
+          &.column2,&.column3 {
+            dd {
+              width: $count-width * 2 + 10;
+              a {
+                width: ($count-width * 2 + 10) * .5 - 2;
+                line-height: $line-height - $border-width - $border-width - 2;
+                height: $line-height - $border-width - $border-width - 2;
+                overflow: hidden;
+              }
+            }
+          }
+          &.column3 {
+            dd {
+              width: $count-width * 3 + 6;
+              a {
+                width: $count-width;
+              }
+            }
+          }
+          h6 {
+            margin: -1px -1px 1px;
+            border: 2px solid lighten($colorMain, 20%);
+            border-bottom-width: 3px;
+            input {
+              padding: 0 5px;
+              background: $colorBg;
+              border-radius: 0;
+              height: 28px;
+              line-height: 28px;
+            }
+          }
+        }
+      }
+      &.labut {
+        label {
+          display: inline-block;
+          margin: 3px 5px;
+          border-right: 1px solid #dcdcdc;
+          width: ($count-width * 2 * .4) - 11;
+          line-height: $line-height - $border-width - $border-width - 6;
+          height: $line-height - $border-width - $border-width - 6;
+        }
+      }
+      &.inputdb {
+        b {
+          display: inline-block;
+          width: 18px;
+          line-height: $line-height - $border-width - $border-width;
+          height: $line-height - $border-width - $border-width;
+          text-align: center;
+        }
+        input {
+          width: $count-width - 11!important;
+          text-indent: 5px;
+          &.timeSecond {
+            font-size: 9px;
+            letter-spacing: -1px;
+          }
+          &:read-only {
+            background: transparent;
+          }
+        }
+      }
+      input {
+        display: inline-block;
+        border: none;
+        box-shadow: none;
+        // background: #f60;
+        vertical-align: top;
+        background: transparent;
+        &:focus {
+          border: none;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  .checkBtn {
+    display: table-cell;
+    position: absolute;
+    margin: 0 0 0 0;
+    right: 15px;
+    top: 0;
+    // padding: 5px 0px 5px 5px;
+    height: 100%;
+    vertical-align: bottom;
+    width: 100px;
+    // background: darken($colorBgSec, 5%);
+    a {
+      position: absolute;
+      display: block;
+      background: $colorMain;
+      color: $colorBg;
+      width: 100%;
+      text-decoration: none;
+      text-align: center;
+      height: $heightBase + 2;
+      line-height: $heightBase + 2;
+      bottom: $commonMPwidth + 1;
+      &:hover {
+        background: lighten($colorMain, 15%)
+      }
+      &:active {
+        background: darken($colorMain, 15%)
+      }
+      @extend %groupRadius;
+    }
+    .mainBtn {
+      width: 80px;
+    }
+    .detailBtn {
+      right: 0;
+      width: 20px;
+      border-left: 1px solid darken($colorMain, 5%);
+      &:after {
+        display: inline-block;
+        margin-bottom: 9px;
+        content: "";
+        width: 0;
+        height: 0;
+        vertical-align: middle;
+        border-color: transparent transparent $colorBg transparent;
+        -webkit-transition: transform 0.2s;-moz-transition: transform 0.2s;transition: transform 0.2s;
+        border-width: 5px;
+        border-style: solid;
+      }
+    }
+  }
+  &.simpleMode {
+    & > ul {
+      height: 64px;
+      overflow: hidden;
+      &:after, &:before {
+        position: absolute;
+        bottom: 4px;
+        content: "";
+        display: block;
+        width: 100%;
+        background: -webkit-linear-gradient(top, rgba($colorBgSec, .3), rgba($colorBgSec, 1));
+        background: -moz-linear-gradient(top, rgba($colorBgSec, .3), rgba($colorBgSec, 1));
+        background: -o-linear-gradient(top, rgba($colorBgSec, .3), rgba($colorBgSec, 1));
+        height: 14px;
+      }
+      &:after {
+        bottom: 0px;
+        background: $colorBgSec;
+        height: 4px;
+      }
+      .Vselect {
+        position: static;
+      }
+    }
+    .checkBtn {
+      a {
+        bottom: 20px;
+        &.detailBtn:after {
+          margin-bottom: 0;
+          transform:rotate(180deg);-ms-transform:rotate(180deg);-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);-o-transform:rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+

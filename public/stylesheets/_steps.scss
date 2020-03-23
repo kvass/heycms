@@ -1,0 +1,101 @@
+/*
+* 标签样式
+*
+* 全局式的标签样式
+*/
+
+
+$stepsHeight : 32px;
+
+$stepsColor : $colorMain #f1f1f1 #999;
+
+.steps {
+  height: $stepsHeight;
+  overflow: hidden;
+  li {
+    float: right;
+    position: relative;
+    width: 25%;
+    height: $stepsHeight;
+    line-height: $stepsHeight;
+    background: nth($stepsColor, 2);
+    text-align: center;
+    font-size: $fontSizeBase * 1.4;
+    i {
+      @include inline-block;
+      margin: -2px 5px 0 0;
+      vertical-align: middle;
+      width: $stepsHeight - 12px;
+      height: $stepsHeight - 12px;
+      line-height: $stepsHeight - 12px;
+      border-radius: 50%;
+      font-size: $fontSizeBase;
+      background: none;
+      color: nth($stepsColor, 1);
+      border: 1px solid nth($stepsColor, 1);
+    }
+    &:before,&:after {
+      position: absolute;
+      top: -2px;
+      right: -34px;
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border-width: 18px;
+      border-style: solid;
+      border-color: transparent transparent transparent $colorBg;
+    }
+    &:after {
+      right: -31px;
+      border-color: transparent transparent transparent nth($stepsColor, 2);
+    }
+    &:first-child {
+      &:before,&:after {
+        display: none;
+      }
+    }
+    &.current {
+      background: nth($stepsColor, 1);
+      color: $colorBg;
+      &:after {
+        border-color: transparent transparent transparent nth($stepsColor, 1);
+      }
+      i {
+        background: nth($stepsColor, 1);
+        color: $colorBg;
+        border: 1px solid nth($stepsColor, 2);
+      }
+    }
+  }
+  &.count3 {
+    li {
+      width: 33%;
+      &:first-child {
+        width: 34%;
+      }
+    }
+  }
+  &.count4 {
+    li {
+      width: 20%;
+    }
+  }
+  &.count5 {
+    li {
+      width: 20%;
+    }
+  }
+  &.count6 {
+    li {
+      width: 17%;
+      &:first-child,&:last-child {
+        width: 16%;
+      }
+    }
+  }
+}
+
+
+
+

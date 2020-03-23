@@ -1,0 +1,361 @@
+
+
+/*
+* 清除动画效果
+* 通过设置animation name为空
+*/
+@mixin no_animation {
+  animation-name: none;
+}
+
+
+
+/*
+* Clearfix
+* 清除浮动所用，若已引用compass 原来样式，即可省略。
+*/
+@mixin clearfix {
+  *zoom: 1;
+
+  &:after, &:before {
+    content: '.';
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+// 清零 margin\padding 
+@mixin resetMP {
+  margin: 0;
+  padding: 0;
+}
+@mixin inline-block {
+  display: inline-block;
+}
+
+@mixin ellipsis {
+  text-overflow: ellipsis;overflow: hidden;white-space:nowrap;
+}
+
+@mixin input-focus($color: $input-border-focus) {
+  $color-rgba: rgba(red($color), green($color), blue($color), .6);
+  &:focus {
+    border-color: $color;
+    outline: 0;
+    // @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $color-rgba);
+  }
+}
+
+// Placeholder text
+@mixin placeholder($color: $input-color-placeholder) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder { color: $color; } // Internet Explorer 10+
+  &::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
+}
+
+@mixin column($count) {
+  @include clearfix;
+  & > * {
+    float: left;
+    width: 100% / $count;
+  }
+  @if ($count == 3) {
+    & > * {
+      width: 33.3%;
+      &:last-child {
+        width: 33.4%;
+      }
+    }
+  }
+  @if ($count == 6) {
+    & > * {
+      width: 16.7%;
+      &:first-child,
+      &:last-child {
+        width: 16.6%;
+      }
+    }
+  }
+  @if ($count == 7) {
+    & > * {
+      width: 14.3%;
+      &:last-child {
+        width: 14.2%;
+      }
+    }
+  }
+  @if ($count == 9) {
+    & > * {
+      width: 11.1%;
+      &:last-child {
+        width: 11.2%;
+      }
+    }
+  }
+}
+/*
+* @include arrow(方向, 线的或块的颜色, 箭头宽度, 覆盖颜色, 线的宽度)
+* 若是色块箭头，"覆盖颜色"值为：false，"线的宽度"值可随意，但必须写。
+*/
+@mixin arrow($pointer, $bColor, $W, $secBColor, $aW) {
+  letter-spacing: -4px;
+  * {
+    letter-spacing: 0;
+  }
+  i {
+    @include inline-block;
+    vertical-align: middle;
+    width: $W * 2;
+    height: $W * 2;
+    overflow: hidden;
+    text-align: left;
+    line-height: 1px;
+  }
+  i:before {
+    @include inline-block;
+    vertical-align: top;
+    text-align: center;
+    content: "";
+    width: 0;
+    height: 0;
+    font-size: 0;
+    border-style: solid;
+    border-width: $W;
+    border-color: transparent transparent transparent transparent;
+    border-#{$pointer}-color: $bColor;
+  }
+  @if $secBColor {
+    i:after {
+      @include inline-block;
+      vertical-align: top;
+      text-align: left;
+      content: "";
+      width: 0;
+      height: 0;
+      font-size: 0;
+      border-style: solid;
+      border-width: $W;
+      border-color: transparent transparent transparent transparent;
+      border-#{$pointer}-color: $secBColor;
+    }
+  }
+  @if $pointer == left {
+    i {
+      width: $W;
+      height: $W * 2;
+      &:after {
+        margin-top: - $W * 2;
+        margin-left: - $aW;
+      }
+    }
+  }
+  @if $pointer == right {
+    i {
+      width: $W;
+      height: $W * 2;
+      &:before {
+        margin-left: - $W;
+      }
+      &:after {
+        margin-left: - ($W - $aW);
+        margin-top: - $W * 2;
+      }
+    }
+  }
+  @if $pointer == top {
+    i {
+      width: $W * 2;
+      height: $W;
+      &:after {
+        margin-top: - ($W * 2 + $aW);
+      }
+    }
+  }
+  @if $pointer == bottom {
+    i {
+      width: $W * 2;
+      height: $W;
+      &:before {
+        margin-top: - $W;
+      }
+      &:after {
+        margin-top: - ($W * 2 - $aW);
+      }
+    }
+  }
+}
+
+/*
+* 
+* 图片 mixin
+*/ 
+@mixin pic($picW, $picH, $picPadding, $picBorder) {
+  @include inline-block;
+  padding: $picPadding;
+  width: $picW + ($picPadding + $picBorder) * 2;
+  height: $picH + ($picPadding + $picBorder) * 2;
+  border: $picBorder solid $colorBorder;
+  overflow: hidden;
+  vertical-align: middle;
+  img {
+    display: block;
+    line-height: 1px;
+    width: $picW;
+    height: $picH;
+  }
+}
+
+/*
+* 按钮 mixin
+*/ 
+@mixin buttonSize($paddingTB, $paddingLR) {
+  padding: $paddingTB $paddingLR;
+  font-size: $fontSizeBase * 1.2;
+  line-height: $heightBase;
+  border-radius: $borderRadius;
+}
+@mixin buttonColor($buttonColor) {
+  &,
+  &:visited,
+  &:focus,
+  &.focus {
+    background: $buttonColor;
+    border-color: $buttonColor;
+    color: $colorBg;
+  }
+  &:hover {
+    color: $colorBg;
+    background: lighten($buttonColor, 10%);
+    border-color: lighten($buttonColor, 10%);
+  }
+  &:active,
+  &.active {
+    @extend %active;
+  }
+  &.disable,
+  &[disabled] {
+    background: #999;
+    border-color: #999;
+    color: #666;
+  }
+}
+
+/* 块居中 */
+@mixin blockcenter($blockWidth, $kitWidth) {
+  left: - $blockWidth / 2 + $kitWidth / 2;
+  width: $blockWidth;
+}
+
+@mixin flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+
+/*
+* 通用class --只供货 sass 引入，不生成最终样式
+* 以 @extend %**** 的方式来引入
+* 
+*/
+%warn {
+  &::before {
+    @extend .Icon::before;
+    content: "\e631";
+    color: $colorOrange;
+  }
+}
+%error {
+  &::before {
+    @extend .Icon::before;
+    color: $colorRed;
+    content: "\e6b0";
+  }
+}
+%attention {
+  &::before {
+    @extend .Icon::before;
+    color: $colorBlue;
+    content: "\e630";
+  }
+}
+%info {
+  &::before {
+    @extend .Icon::before;
+    color: lighten($colorGray, 20%);
+    content: "\e69e";
+  }
+}
+%success {
+  &::before {
+    @extend .Icon::before;
+    color: $colorGreen;
+    content: "\e6b1";
+  }
+}
+%question::before {
+  content: "\e736";
+}
+%close {
+  cursor: pointer;
+  &::before {
+    @extend .Icon::before;
+    color: $colorRed;
+    content: "\e62e";
+  }
+}
+%delete {
+  cursor: pointer;
+  &::before {
+    @extend .Icon::before;
+    @extend .Icon.shanchu::before;
+    color: $colorRed;
+  }
+}
+%active {
+  background: $colorGray;
+  border-color: darken($colorGray, 20%);
+  color: darken($colorGray, 20%);
+}
+%inputHide {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+%groupRadius {
+  &:first-child {
+    border-radius: $borderRadius 0 0 $borderRadius;
+  }
+  &:last-child {
+    border-radius: 0 $borderRadius $borderRadius 0;
+  }
+}
+%picS {
+  // @include inline-block;
+  padding: 2px;
+  width: 56px;
+  height: 56px;
+  border: 1px solid $colorBorder;
+  overflow: hidden;
+  img {
+    display: block;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+
+

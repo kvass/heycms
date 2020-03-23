@@ -1,0 +1,318 @@
+/*
+* 标签样式
+*
+* 全局式的标签样式
+*/
+
+
+$tabItemWdith: 120px 100px 100px 34px;//1》一级Tab的宽度、2》二级Tab的宽度、3》三级Tab的宽度
+
+$tabBgColor  : $colorBgSec  $colorBgSec  #999;//* Tab 背景颜色--一级背景、二级背景、三级背景
+
+//一级Tab的颜色: 背景     边框          文字        背景H       边框H        文字     背景C     边框C     文字C
+$tabFriColor : $colorBgSec     $colorBorder $colorMain  $colorBg   $colorMain  $colorMain     $colorBg  $colorBgSec     $colorBg     #e64c4b;
+//二级Tab的颜色: 背景     边框      文字      背景H     边框H     文字     背景C     边框C     文字
+$tabSceColor : $colorBg     #e64c4b  $colorMain  #e64c4b  $colorBg     $colorBg     #e64c4b  #e64c4b  $colorBg;
+//三级Tab的颜色: 背景     边框      文字      背景H     边框H     文字     背景C     边框C     文字
+$tabThiColor : $colorBg     $colorBg     #e64c4b  $colorBg     #e64c4b  #e64c4b  $colorBg     #e64c4b  #e64c4b;
+
+.tab {
+  padding: 0 0;
+  background: nth($tabBgColor, 1);
+  @include clearfix;
+  border-bottom: 1px solid $colorBorder;
+  li {
+    float: left;
+    margin: 1px 1px 0;
+    a {
+      padding: 0 15px;
+      text-decoration: none;
+      border: 1px solid;
+      border-width: 1px 1px 0;
+      @include ellipsis;
+      -webkit-transition: background 0.2s,  border 0.2s;-moz-transition: background 0.2s,  border 0.2s;transition: background 0.2s,  border 0.2s;
+    }
+    &:first-child {margin-left: 0;}
+    &:last-child {margin-right: 0;}
+  }// 共用 li\a 属性
+  & > li {
+    & > a {
+      display: block;
+      height: nth($tabItemWdith, 4);
+      line-height: nth($tabItemWdith, 4);
+      width: nth($tabItemWdith, 1);
+      text-align: center;
+      color: nth($tabFriColor, 3);
+      background: nth($tabFriColor, 1);
+      border-color: nth($tabFriColor, 2);
+      &:hover {
+        color: $colorMain;
+        border-color: lighten($colorMain, 20%);
+      }
+      &:active {
+        color: #333;
+        background: #666;
+        border-color: #666;
+      }
+    }
+    &.current {
+      margin-bottom: 0;
+      a {
+        position: relative;
+        margin-bottom: -1px;
+        background: $colorBgSec;
+        color: $colorMain;
+        border-color: $colorBorder;
+        border-top-color: $colorMain;
+        border-bottom: 0;
+        border-top-width: 2px;
+        height: nth($tabItemWdith, 4) + 1;
+        // transform:rotate(5deg);-ms-transform:rotate(4deg);-moz-transform:rotate(4deg);-webkit-transform:rotate(4deg);-o-transform:rotate(4deg);
+      }
+    }
+    &.subLevel {
+      clear: both;
+      float: none;
+      display: block;
+      margin: 0;
+      & > ul {
+        padding: 10px 0;
+        font-size: 80%;
+        overflow: hidden;
+        background: nth($tabBgColor, 2);
+        border-top: 2px solid $colorMain;
+        li {
+          float: left;
+          margin: 1px;
+          a {
+            display: block;
+            text-align: center;
+            height: nth($tabItemWdith, 4) - 2;
+            line-height: nth($tabItemWdith, 4) - 2;
+            width: nth($tabItemWdith, 2);
+            color: $colorMain;
+            background: $colorBg;
+            border-color: $colorBg;
+            &:hover {
+              color: $colorBg;
+              background: lighten($colorMain, 20%);
+              border-color: lighten($colorMain, 20%);
+            }
+            &:active {
+              color: #333;
+              background: #666;
+              border-color: #333;
+            }
+          }
+          &.current {
+            margin-bottom: -1px;
+            a {
+              height: nth($tabItemWdith, 4);
+              background: $colorBg;
+              color: $colorMain;
+              border-color: $colorMain;
+              border-bottom: 0;
+            }
+          }
+          &.subLevel {
+            clear: both;
+            float: none;
+            display: block;
+            margin: 0;
+            ul {
+              padding: 10px;
+              font-size: 80%;
+              overflow: hidden;
+              background: nth($tabBgColor, 2);
+              border: 1px solid $colorMain;
+              a {
+                line-height: 28px;
+                height: 28px;
+                width: nth($tabItemWdith, 3);
+                border-color: nth($tabThiColor, 2);
+                &:hover {
+                  color: nth($tabThiColor, 6);
+                  background: nth($tabThiColor, 4);
+                  border-color: nth($tabThiColor, 5);
+                }
+                &:active {
+                  color: #333;
+                  background: #666;
+                  border-color: #333;
+                }
+              }
+              & > li.current a {
+                height: 29px;
+                background: nth($tabThiColor, 7);
+                color: nth($tabThiColor, 9);
+                border-color: nth($tabThiColor, 7);
+                &:before, &:after {
+                  content: "";
+                  margin: -11px auto 0;
+                  display: block;
+                  width: 0px;
+                  height: 0;
+                  border-width: 5px;
+                  border-style: solid;
+                  border-color: transparent transparent nth($tabThiColor, 8) transparent;
+                }
+                &:before {
+                  margin: 0px auto -10px;
+                  border-color: nth($tabThiColor, 8) transparent transparent transparent;
+                }
+              }
+            }
+          }
+          // subLevel end
+        }
+      }
+    }
+  }
+  &.X2,
+  &.X3,
+  &.X4,
+  &.X5,
+  &.X6,
+  &.X7,
+  &.X8 {
+    & > li {
+      & > a {
+        padding: 0;
+        width: 100%;
+      }
+      &:last-child,
+      &:first-child {
+        a {
+          width: 100%;
+        }
+      }
+    }
+  }
+  &.X2 {
+    & > li {
+      width: calc(50% - 2px);
+      &:first-child {
+        margin-left: 0;
+        width: calc(50% - 1px);
+      }
+      &:last-child{
+        margin-right: 0;
+        width: calc(50% - 1px);
+      }
+    }
+  }
+  &.X3 {
+    & > li {
+      width: calc(33% - 2px);
+      &:first-child {
+        margin-left: 0;
+        width: calc(33% - 1px);
+      }
+      &:last-child{
+        margin-right: 0;
+        width: calc(34% - 1px);
+      }
+    }
+  }
+  &.X4 {
+    & > li {
+      width: calc(25% - 2px);
+      &:first-child {
+        width: calc(25% - 1px);
+        margin-left: 0;
+      }
+      &:last-child {
+        width: calc(25% - 1px);
+        margin-right: 0;
+      }
+    }
+  }
+  &.X5 {
+    & > li {
+      width: calc(20% - 2px);
+      &:first-child {
+        width: calc(20% - 1px);
+        margin-left: 0;
+      }
+      &:last-child {
+        width: calc(20% - 1px);
+        margin-right: 0;
+      }
+    }
+  }
+  &.X6 {
+    & > li {
+      width: calc(17% - 2px);
+      &:first-child {
+        width: calc(16% - 1px);
+        margin-left: 0;
+      }
+      &:last-child {
+        width: calc(16% - 1px);
+        margin-right: 0;
+      }
+    }
+  }
+  &.X7 {
+    & > li {
+      width: calc(14% - 2px);
+      &:first-child,
+      &:last-child, {
+        width: calc(15% - 1px);
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.X8 {
+    & > li {
+      width: calc(12.5% - 2px);
+      &:last-child,
+      &:first-child {
+        width: calc(12.5% - 1px);
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.Xcount {
+    padding: 20px 15px;
+    & > li {
+      &.current {
+        margin-bottom: 1px;
+        & > a {
+          border: 1px solid $colorMain;
+          margin: 0;
+          height: nth($tabItemWdith, 4);
+        }
+      }
+    }
+  }
+  &.Xlevel {
+    padding: 20px 15px;
+    // background: #666;
+    a {
+      border: 1px solid #333;
+      height: 24px;
+      line-height: 24px;
+      font-size: $fontSizeBase * 1.4;
+      &.current {
+        margin: 0;
+        transform: rotate(0);
+        height: 25px;
+      }
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,248 @@
+/*
+* 按钮样式
+*
+* 全局式的按钮样式
+*/
+
+$btnNamespace : '.Btn' !default;
+//
+// 按钮尺寸
+// -----------------------------------------------------------------------------------------
+
+#{$btnNamespace} {
+  display: inline-block;
+  margin-bottom: 0; // input.btn
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+  white-space: nowrap;
+  @include buttonSize(0px, 15px);
+
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      outline: 0;
+      background-image: none;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    text-decoration: none;
+    outline: none;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+    // @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &.disable,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: default;
+    // @include opacity(.65);
+    // @include box-shadow(none);
+  }
+
+}
+
+a#{$btnNamespace} {
+  &.disable,
+  fieldset[disabled] & {
+    pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+  }
+}
+
+
+// 通用按钮 buttons
+// --------------------------------------------------
+
+#{$btnNamespace}.default {
+  &,
+  &:visited,
+  &:focus,
+  &.focus {
+    border-color: $colorBorder;
+    background: $colorBg;
+    color: $colorMain;
+  }
+  &:hover {
+    background: $colorMain;
+    border-color: $colorMain;
+    color: $colorBg;
+  }
+  &:active,
+  &.active {
+    background: #666;
+    border-color: #666;
+    color: #333;
+  }
+  &.disable,
+  &[disabled] {
+    background: #999;
+    border-color: #999;
+    color: #666;
+  }
+}
+#{$btnNamespace}.main {
+  @include buttonColor($colorMain);
+}
+#{$btnNamespace}.success {
+  @include buttonColor($colorGreen);
+}
+#{$btnNamespace}.info {
+  @include buttonColor($colorGray);
+}
+#{$btnNamespace}.warn {
+  @include buttonColor($colorOrange);
+}
+#{$btnNamespace}.delete {
+  @include buttonColor($colorRed);
+}
+
+
+// 模拟单选按钮
+// 一般用在如：大图模式、列表模式
+// -------------------------
+
+.VradioBtn {
+  float: right;
+  margin-right: $commonMPwidth;
+  letter-spacing: -4px;
+  font-size: $fontSizeBase * 1.2;
+  a {
+    @include buttonSize(0px, 15px);
+    @include inline-block;
+    margin-right: -1px;
+    border: 1px solid $colorBorder;
+    color: $colorMain;
+    letter-spacing: 0;
+    cursor: pointer;
+    &:hover {
+      color: $colorMain;
+      border-color: $colorMain;
+    }
+    &:active {
+      @extend %active;
+    }
+    &::before {
+      width: 20px;
+    }
+    &.current {
+      position: relative;
+      background: $colorMain;
+      border-color: $colorMain;
+      color: $colorBg;
+    }
+    &.pic::before {
+      margin-right: 5px;
+      content: "\e6b7";
+    }
+    &.list {
+      &::before {
+        margin-right: 5px;
+        content: "\e6b9";
+      }
+    }
+    @extend %groupRadius;
+  }
+}
+
+
+// 让按钮看起来像链接
+.qBtn-link {
+  // color: $link-color;
+  font-weight: normal;
+  border-radius: 0;
+
+  &,
+  &:active,
+  &.active,
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: transparent;
+    // @include box-shadow(none);
+  }
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  &:hover,
+  &:focus {
+    // color: $link-hover-color;
+    text-decoration: none;
+    background-color: transparent;
+  }
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus {
+      color: #666;
+      text-decoration: none;
+    }
+  }
+}
+
+
+// 按钮尺寸
+// 请按大写的s\m\l来区分
+// --------------------------------------------------
+
+.qBtn.S {
+  @include buttonSize(0px, 8px);
+  line-height: 22px;
+}
+.qBtn.M {
+  @include buttonSize(3px, 20px);
+}
+.qBtn.L {
+  @include buttonSize(8px, 40px);
+  font-size: $fontSizeBase * 1.2;
+}
+
+
+// 把按钮变成块元素
+// --------------------------------------------------
+
+.qBtnBlock {
+  display: block;
+  width: 100%;
+}
+
+.qBtnBlock + .qBtnBlock {
+  margin-top: 5px;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.qBtnBlock {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,610 @@
+/*
+* 表单样式
+*
+* 全局式的表单样式
+*/
+
+
+$label-wdith: 180px 90px;
+$line-height: 32px 24px;
+$input-color : #333;
+$input-bg : $colorBg;
+$input-border-focus : $colorMain;
+$input-color-placeholder : #ccc;
+$input-bg-disabled : #f1f1f1;
+$columnCount : 2 3 4 5 6;
+$inputWidth : 50px 80px 240px 480px 600px 800px;
+
+.form {
+  // & + .form {
+  //   margin-bottom: 20px;
+  // }
+  h4 {
+    padding: 0 0 15px;
+    font-size: $fontSizeBase * 1.2;
+  }
+  h5 {
+    padding: 0 0 8px;
+    font-size: $fontSizeBase * 1.2;
+  }
+  & > li {
+    // @include clearfix;
+    padding: 5px 0 5px nth($label-wdith, 1);
+    height: $heightBase * 1.5 + 11;
+    line-height: $heightBase * 1.5 + 1;
+    &>label {
+      float: left;
+      margin-left: - nth($label-wdith, 1) + 10px;
+      padding-right: 5px;
+      width: nth($label-wdith, 1) - 10px;
+      text-align: right;
+      line-height: inherit;
+      height: inherit;
+      vertical-align: middle;
+      em {
+        padding: 3px 5px 0 0;
+        color: $colorRed;
+        line-height: inherit;
+        content: "*";
+      }
+    }
+    & > samp {
+      margin-left: 5px;
+    }
+    .horizontal,
+    .transverse {
+      li { 
+        display: inline;
+        padding-right: 20px;
+      }
+    }
+    .vertical {
+      li {
+        label {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+  @for $i from 1 through length($columnCount) {
+    &.column#{nth($columnCount,$i)} {
+      @include clearfix;
+      &>li {
+        float: left;
+        padding-left: $fontSizeBase * 8;
+        width: 100% / nth($columnCount,$i);
+        &>label {
+          margin-left: -$fontSizeBase * 8;
+          width: $fontSizeBase * 8;
+        }
+      }
+    }
+  }
+  &.compactForm {
+    & ~ .compactForm {
+      margin-bottom: 12px;
+    }
+    li {
+      padding: 3px 0 3px nth($label-wdith, 2);
+      line-height: nth($line-height, 2);
+      min-height: nth($line-height, 2);
+      &>label {
+        margin-left: - nth($label-wdith, 2) + 10px;
+        width: nth($label-wdith, 2) - 10px;
+      }
+    }
+  }
+}
+
+// Override content-box in Normalize (* isn't specific enough)
+input[type="search"] {
+  // @include box-sizing(border-box);
+}
+
+// Position radios and checkboxes better
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9; // IE8-9
+  line-height: normal;
+}
+
+input[type="file"] {
+  display: block;
+}
+
+// Make range inputs behave like textual form controls
+input[type="range"] {
+  display: block;
+  // width: 100%;
+}
+
+// Make multiple select elements height not fixed
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+// Focus for file, radio, and checkbox
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  // @include tab-focus;
+}
+
+// Adjust output element
+output {
+  display: block;
+  // padding-top: ($paddingTB + 1);
+  font-size: $fontSizeBase * 1.2;
+  line-height: nth($line-height, 1);
+  color: $input-color;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="number"],
+input[type="email"] {
+  width: nth($inputWidth, 2);
+  height: $heightBase + 2;
+  padding: 4px 5px;
+  font-size: $fontSizeBase * 1.2;
+  line-height: $heightBase - 8;
+  color: $input-color;
+  background-color: $input-bg;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid $colorBorder;
+  border-radius: $borderRadius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
+  // @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+
+  @include input-focus;
+
+  // Placeholder
+  @include placeholder;
+
+  // Disabled and read-only inputs
+  &[disabled],
+  &.disable,
+  &[readonly],
+  fieldset[disabled] & {
+    background-color: $input-bg-disabled;
+    opacity: 1;
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: default;
+  }
+  &.XS {
+    width: nth($inputWidth, 1);
+  }
+  &.S {
+    width: nth($inputWidth, 2);
+  }
+  &.M {
+    width: nth($inputWidth, 3);
+  }
+  &.L {
+    width: nth($inputWidth, 4);
+  }
+  &.XL {
+    width: nth($inputWidth, 5);
+  }
+  &.error {
+    background: lighten($colorRed, 20%);
+    color: $colorRed;
+    border-color: $colorRed;
+  }
+}
+textarea {
+  &.S {
+    height: ($heightBase + 2) * 2;
+  }
+  &.M {
+    height: ($heightBase + 2) * 2;
+  }
+  &.L {
+    height: ($heightBase + 2) * 3;
+  }
+  &.XL {
+    height: ($heightBase + 2) * 4;
+  }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  vertical-align: middle;
+  margin-top: -3px;
+  margin-right: 8px;
+}
+.radio,
+.checkbox {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  label {
+    // min-height: $line-height-computed; // Ensure the input doesn't jump when there is no text
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
+
+.radio + .radio,
+.checkbox + .checkbox {
+  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+}
+
+// Radios and checkboxes on same line
+.radio-inline,
+.checkbox-inline {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+}
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+// Apply same disabled cursor tweak as for inputs
+// Some special care is needed because <label>s don't inherit their parent's `cursor`.
+//
+// Note: Neither radios nor checkboxes can be readonly.
+input[type="radio"],
+input[type="checkbox"] {
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: default;
+  }
+}
+// These classes are used directly on <label>s
+.radio-inline,
+.checkbox-inline {
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: default;
+  }
+}
+// These classes are used on elements with <label> descendants
+.radio,
+.checkbox {
+  &.disabled,
+  fieldset[disabled] & {
+    label {
+      cursor: default;
+    }
+  }
+}
+.uploadBtn {
+  input[type="file"] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+}
+.uploadList {
+  width: 480px;
+  p {
+    @extend .Icon;
+    &::before {
+      width: 18px;
+      color: $colorGreen;
+    }
+    &.cuowu::before {
+      color: $colorRed;
+    }
+    a.close {
+      @include inline-block;
+      margin-left: 10px;
+      @extend %delete;
+    }
+  }
+  &.pic {
+    p {
+      @include inline-block;
+      letter-spacing: -4px;
+      margin: 0 2px 2px 0;
+      a {
+        display: block;
+      }
+      &::before,a.close {
+        display: none;
+      }
+      img {
+        display: block;
+        padding: 2px;
+        border: 1px solid $colorBorder;
+        width: 50px;
+        height: 50px;
+        line-height: 1px;
+      }
+      &:hover {
+        a.close {
+          display: block;
+          float: left;
+          position: relative;
+          margin: -25px 1px 0;
+          width: 46px;
+          height: 24px;
+          line-height: 24px;
+          text-align: center;
+          background: rgba(255, 255, 255, .8);
+          &::before {
+            width: 45px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+$VselectWidth : 120px;
+
+dl.Vselect,dl.Vdetail  {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  dt {
+    @include ellipsis;
+    cursor: pointer;
+    height: 100%;
+    &:before {
+      margin-left: 5px;
+      @extend .Icon::before;
+      content: "\e6dc";
+      float: right;
+      width: 8px;
+      height: inherit;
+      line-height: inherit;
+      font-size: 9px;
+      -webkit-transform : scale(0.7,0.7);
+      vertical-align: middle;
+    }
+  }
+  dd {
+    display: none;
+    @extend .posilute;
+    top: -1px;
+    left: -1px;
+    z-index: 99999;
+    border: 1px solid $colorBorder;
+    background: $colorBg;
+  }
+  &.Vsooom {
+    position: relative;
+    dd {
+      display: block;
+    }
+  }
+}
+dl.Vselect {
+  min-width: $VselectWidth;
+  border: 1px solid $colorBorder;
+  line-height: $heightBase;
+  dt {
+    padding: 0 8px;
+  }
+  dd {
+    padding: 1px;
+    min-width: $VselectWidth;
+    a {
+      -webkit-transition: width 0.2s,height 0.2s;-moz-transition: width 0.2s,height 0.2s;transition: width 0.2s,height 0.2s;
+      line-height: 1%;
+      @include ellipsis;
+      @include inline-block;
+      width: 100%;
+      cursor: pointer;
+      padding: 0 8px;
+      line-height: $heightBase;
+      height: $heightBase;
+      color: inherit;
+      vertical-align: top;
+      &:before {
+        display: none;
+      }
+      &:hover {
+        background: lighten($colorMain, 25%);
+      }
+      &:active {
+        @extend %active;
+      }
+      &.selected {
+        background: $colorMain;
+        color: $colorBg;
+      }
+    }
+  }
+  &.Vsooom {
+    dd {
+      h6 {display: block;}
+      a {
+        line-height: $heightBase;
+        height: $heightBase;
+      }
+      &.Vsooom + input {
+        margin-left: ($VselectWidth * 2 * .4) - 2;
+      }
+    }
+    &.column2,
+    &.column3 {
+      width: $VselectWidth * 2 + 8;
+      dd {
+        overflow: hidden;
+        a {
+          float: left;
+          padding-top: 0;
+          padding-bottom: 0;
+          letter-spacing: 0;
+          vertical-align: top;
+          width: $VselectWidth - 2px;
+          line-height: $line-height - 2px - 2px - 2;
+        }
+      }
+    }
+    &.column3 {
+      width: $VselectWidth * 3 + 8;
+      a {
+        width: $VselectWidth;
+      }
+    }
+  }
+}
+dl.Vdetail {
+  dt {}
+  dd {
+    padding: 5px;
+    min-width: inherit;
+    & > .qBtn {
+      display: block;
+      border-radius: 0;
+    }
+    & > .qBtn + .qBtn {
+      margin-top: 5px;
+    }
+  }
+}
+.choseAreaBar {
+  @include inline-block;
+  font-size: $fontSizeBase * 1.2;
+  height: $heightBase + 2px;
+  min-width: 100px;
+  s {
+    @include inline-block;
+    padding: 0 5px;
+    &::after {
+      @include inline-block;
+      content: "/";
+      line-height: $heightBase;
+      height: $heightBase;
+      text-align: center;
+    }
+    &:last-child::after {
+      display: none;
+    }
+  }
+  .choseArea.default {
+    cursor: pointer;
+    border: 1px solid $colorBorder;
+    height: $heightBase + 2px;
+    line-height: $heightBase;
+    background: $colorBg;
+    &:hover {
+      border-color: $colorMain;
+    }
+    ol {
+      li {
+        padding: 0 0 0 5px;
+        @include inline-block;
+        &::after {
+          @include inline-block;
+          margin-left: 5px;
+          content: "/";
+          line-height: $heightBase;
+          height: $heightBase;
+          text-align: center;
+        }
+        &:last-child {
+          padding: 0 5px 0 5px;
+          &::after {
+            display: none;
+          }
+        }
+        a {
+          color: $colorFont;
+        }
+      }
+    }
+    ul {
+      display: none!important;
+    }
+  }
+}
+.choseArea.open {
+  display: block;
+  position: absolute;
+  z-index: 8900;
+  width: 420px;
+  background-color: $colorBg;
+  ol {
+    @extend .tab;
+    li {
+      width: calc(33.3% + 1px);
+      margin: 0 -1px 0 0!important;
+      &:last-child {
+        margin-right: 0!important;
+        width: 33.4%;
+      }
+      a {
+        width: 100%!important;
+        cursor: default;
+        height: $heightBase!important;
+        line-height: $heightBase - 1!important;
+        &:hover,
+        &:active {
+          border-color: $colorBorder!important;
+        }
+      }
+      &.current {
+        a {
+          background: $colorBg!important;
+          height: $heightBase + 1!important;
+        }
+      }
+    }
+  }
+  ul {
+    padding: $commonMPwidth;
+    overflow: hidden;
+    border: 1px solid $colorBorder;
+    border-top: 0;
+    li {
+      float: left;
+      margin: 1px;
+      padding: 1px 5px;
+      border-radius: $borderRadius;
+      @include ellipsis;
+      width: 60px;
+      line-height: $heightBase;
+      cursor: pointer;
+      &:hover {
+        padding: 0 4px;
+        border: 1px solid $colorBorder;
+      }
+      &:active {
+        background: #666;
+      }
+      &.selected {
+        background: $colorMain;
+        color: #fff;
+        &:hover {
+          border-color: $colorMain;
+        }
+      }
+    }
+  }
+}
+
+
+

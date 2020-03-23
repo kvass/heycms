@@ -1,0 +1,83 @@
+/*
+* font icon
+*
+* 全局式的图标样式
+* 务必以淘宝库里的原名为class名，否则会造成使用困扰。
+* 在淘宝项目里新增图标后，需要重新生成图标地址。
+*/
+@font-face {
+  font-family: 'BMX';  /* project id 657630 */
+  src: url('//at.alicdn.com/t/font_657630_boydb9oeaso.eot');
+  src: url('//at.alicdn.com/t/font_657630_boydb9oeaso.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_657630_boydb9oeaso.woff') format('woff'),
+  url('//at.alicdn.com/t/font_657630_boydb9oeaso.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_657630_boydb9oeaso.svg#BMX') format('svg');
+}
+
+                          .Icon::before {display: inline-block;text-align: center;text-transform: none;font-weight: normal;font-style: normal;font-variant: normal;font-family: 'BMX'; line-height: 1; -webkit-font-smoothing: antialiased;}
+                  .Icon.appList::before {content: "\e70b"} // 应用列表图标
+                    .Icon.close::before {content: "\e626"} // 关闭、叉图标
+                      .Icon.Yes::before {content: "\e660"} // 正确、打勾图标
+                   .Icon.jiahao::before {content: "\e817"} // 加号图标
+                   .Icon.arrowL::before {content: "\e6d5"} // 箭头向左图标
+                   .Icon.arrowT::before {content: "\e6d5";transform: rotate(90deg)} // 箭头向上图标
+                   .Icon.arrowR::before {content: "\e6d5";transform: rotate(180deg)} // 箭头向上图标
+                   .Icon.arrowD::before {content: "\e6d5";transform: rotate(270deg)} // 箭头向上图标
+                     .Icon.home::before {content: "\e68a"} // 首页、家
+                    .Icon.phone::before {content: "\e65c"} // 电话图标
+                    .Icon.jibie::before {content: "\e601"} // 级别、会员、VIP图标
+                   .Icon.gongji::before {content: "\e6d0"} // 工具包
+                   .Icon.shezhi::before {content: "\e813"} // 设置、工具、齿轮图标
+                   .Icon.bianji::before {content: "\e726"} // 编辑图标
+                  .Icon.touxian::before {content: "\e635"} // 头像图标
+                   .Icon.souseo::before {content: "\e632"} // 放大镜图标
+
+                    .Icon.guzhi::before {content: "\e607"} // 雇主图标
+                      .Icon.ayi::before {content: "\e741"} // 阿姨图标
+                .Icon.yibiaopan::before {content: "\e625"} // 仪表盘图标
+                   .Icon.dindan::before {content: "\e605"} // 订单图标
+                  .Icon.chijing::before {content: "\e688"}
+                    .Icon.wuliu::before {content: "\e692"}
+                 .Icon.jiangpai::before {content: "\e66e"}
+             .Icon.jinbizhuanru::before {content: "\e664"}
+                 .Icon.dianzhao::before {content: "\e65c"}
+            .Icon.tuwendianzhao::before {content: "\e65d"}
+         .Icon.quxianshangsheng::before {content: "\e706"}
+           .Icon.wangzhanguanli::before {content: "\e67c"}
+      .Icon.genzongmubiaoguanli::before {content: "\e67d"}
+              .Icon.guanggaozhu::before {content: "\e64d"}
+            .Icon.biaoshengbang::before {content: "\e65f"}
+                    .Icon.licai::before {content: "\e608"}
+                .Icon.xiaoliang::before {content: "\e696"}
+                      .Icon.jia::before {content: "\e6af"}
+                     .Icon.jian::before {content: "\e6ae"}
+                 .Icon.xiangxia::before {content: "\e6c3"}
+                .Icon.xiangyou1::before {content: "\e6c1"}
+              .Icon.shangjiaqun::before {content: "\e65b"}
+           .Icon.renzhengyonghu::before {content: "\e62b"}
+           .Icon.dengdaiwenjian::before {content: "\e639"}
+                   .Icon.iandai::before {content: "\e61e"}
+                  .Icon.dengdai::before {content: "\e63e"}
+          .Icon.iconfontcolor35::before {content: "\e70b"}
+               .Icon.yangshengi::before {content: "\e70a"}
+                   .Icon.shouji::before {content: "\e626"}
+                  .Icon.liebiao::before {content: "\e602"}
+                   .Icon.sousuo::before {content: "\e68b"}
+                  .Icon.chexiao::before {content: "\e697"}
+                  .Icon.jiaofei::before {content: "\e607"}
+                  .Icon.wenjian::before {content: "\e637"}
+                 .Icon.bangzhu1::before {content: "\e69f"}
+                  .Icon.jinggao::before {content: "\e631"}//警告
+                  .Icon.gouxuan::before {content: "\e71c"}//对号
+                 .Icon.zhengque::before {content: "\e62d"}//对号、正确
+                    .Icon.cuowu::before {content: "\e62e"}//叉号、错误
+                  .Icon.shanchu::before {content: "\e69c"}//垃圾桶、删除
+              .Icon.bufenxuanze::before {content: "\e7b2"}//树形中的选取与未选取、部分选取——部分选择
+                   .Icon.xuanze::before {content: "\e7b4"}//树形中的选取与未选取、部分选取——全部选择
+              .Icon.xuanzekuang::before {content: "\e7b3"}//树形中的选取与未选取、部分选取——未选择
+
+
+
+
+
+

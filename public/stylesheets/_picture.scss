@@ -1,0 +1,12 @@
+/*
+* 图片尺寸
+* 其他不同尺寸可以自行写，用以下 pic mixin 即可
+*/
+.picXS {@include pic(28px, 28px, 0px, 1px);}
+.picS {@include pic(50px, 50px, 2px, 1px);}
+.picM {@include pic(128px, 128px, 2px, 1px);}
+.picL {@include pic(300px, 300px, 2px, 1px);}
+
+
+
+

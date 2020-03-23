@@ -1,0 +1,180 @@
+/*
+* 设置变量
+*
+*/
+
+
+/*
+* Namespace (ex .qm or .qianmi)
+*
+*/
+$namespace: '.qm' !default; //设置起作用的全局样式开关
+
+
+/*
+* Defaults
+*
+* Some default settings that are used throughout the button library.
+* Changes to these settings will be picked up by all of the other modules.
+* The colors used here are the default colors for the base button (gray).
+* The font size and height are used to set the base size for the buttons.
+* The size values will be used to calculate the larger and smaller button sizes.
+*/
+$bgcolor: #EEE !default;
+$font-color: #666 !default;
+$font-weight: 300 !default;
+$font-size: 16px !default;
+$height: 40px !default;
+$font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif  !default;
+
+
+blockquote.qNote,
+div.qNote {
+  margin: 10px 0;
+  padding: 30px;
+  text-align: center;
+  dl {
+    padding: 15px;
+    dt {
+      @include inline-block;
+      padding-right: 25px;
+      &:before {
+        font-size: $fontSizeBase * 6;
+        width: $fontSizeBase * 6;
+        height: $fontSizeBase * 6;
+      }
+    }
+    dd {
+      @include inline-block;
+      margin-left: 15px;
+      text-align: left;
+      h1 {
+        padding: 8px 0 15px;
+        font-size: $fontSizeBase * 2.5;
+        color: $colorGreen;
+      }
+      p {
+        font-size: $fontSizeBase * 1.2;
+        line-height: 20px;
+      }
+    }
+    &.success {
+      dt:before {
+        @extend %success::before;
+      }
+      dd h1 {
+        color: $colorGreen;
+      }
+    }
+    &.error {
+      dt:before {
+        @extend %error::before;
+      }
+      dd h1 {
+        color: $colorRed;
+      }
+    }
+    &.warning {
+      dt:before {
+        @extend %warn::before;
+      }
+      dd h1 {
+        color: $colorOrange;
+      }
+    }
+    &.info {
+      dt:before {
+        @extend %info::before;
+      }
+      dd h1 {
+        color: $colorGray;
+      }
+    }
+  }
+}
+blockquote.notebook {
+  padding: 15px;
+  border: 1px solid #d9d9d9;
+  dl {
+    text-align: left;
+    dt {
+      @include inline-block;
+      &::before {
+        @extend %info::before;
+        font-size: $fontSizeBase * 3.6;
+        vertical-align: middle;
+        color: lighten($colorGray, 50%);
+      }
+    }
+    dd {
+      @include inline-block;
+      margin-left: $commonMPwidth;
+      h1 {
+        font-size: $fontSizeBase * 1.4;
+        line-height: $fontSizeBase * 2.4;
+      }
+      p {
+        line-height: $fontSizeBase * 1.8;
+        font-size: $fontSizeBase * 1.2;
+      }
+    }
+  }
+}
+q.alert,pre.alert {
+  padding: 0 5px;
+  border: 1px solid;
+  color: #333;
+  font-size: $fontSizeBase * 1.2;
+  line-height: $heightBase;
+  color: $colorGray;
+  background-color: lighten($colorGray, 48%);
+  border-color: lighten($colorGray, 35%);
+  border-radius: $borderRadius;
+  @extend %info;
+  &::before {
+    width: $heightBase;
+  }
+  &.attention {
+    color: $colorBlue;
+    background-color: lighten($colorBlue, 41%);
+    border-color: lighten($colorBlue, 30%);
+    @extend %attention;
+  }
+  &.warn {
+    color: $colorOrange;
+    background-color: lighten($colorOrange, 45%);
+    border-color: lighten($colorOrange, 30%);
+    @extend %warn;
+  }
+  &.error {
+    color: $colorRed;
+    background-color: lighten($colorRed, 38%);
+    border-color: lighten($colorRed, 25%);
+    @extend %error;
+  }
+  &.success {
+    color: $colorGreen;
+    background-color: lighten($colorGreen, 42%);
+    border-color: lighten($colorGreen, 25%);
+    @extend %success;
+  }
+  a.close {
+    float: right;
+    @extend %close;
+    &::before {width: $heightBase;}
+    &:hover::before {
+      color: $colorMain;
+    }
+    &:active::before {
+      color: #333;
+    }
+  }
+}
+q.alert {
+  display: block;
+}
+pre.alert {
+  @include inline-block;
+  border: 0;
+  background: none!important;
+}

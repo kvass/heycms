@@ -1,0 +1,196 @@
+/*
+* 箭头样式
+*
+* 全站的箭头样式
+* @include arrow(方向, 线的或块的颜色, 箭头宽度, 覆盖颜色, 线的宽度)
+* 若是色块箭头，"覆盖颜色"值为：false，"线的宽度"值可随意，但必须写。
+*/
+$tooltip : ".tooltip";
+
+#{$tooltip}T {
+  position: relative;
+  @include arrow(bottom, #fff, 8px, #f60, 1px);
+  float: left;
+  border: 1px solid lingten($colorBlue, 20%);
+  i {
+    position: absolute;
+    top: -8px;
+    left: calc(50% - 8px);
+  }
+}
+#{$tooltip}R {
+  @include arrow(left, lighten($colorBlue, 30%), 8px, lighten($colorBlue, 41%), 1px);
+  width: 300px;
+  i {
+    float: right;
+    margin: 4px -13px 0 0;
+  }
+}
+#{$tooltip}B {
+  position: relative;
+  @include arrow(top, lighten($colorOrange, 30%), 8px, lighten($colorOrange, 45%), 1px);
+  i {
+    position: absolute;
+    top: 34px;
+    left: calc(50% - 8px);
+    // margin: 29px calc(50% - 14px) 0 0;
+  }
+}
+#{$tooltip}L {
+  @include arrow(right, #fff, 8px, #f60, 2px);
+  i {
+    float: left;
+    margin: 3px 0 0 -13px;
+  }
+}
+#{$tooltip}L-line {
+  @include arrow(right, $colorBlue, 8px, false, 2px);
+}
+
+
+.attention#{$tooltip}L {
+  @include arrow(right, lighten($colorBlue, 30%), 8px, lighten($colorBlue, 41%), 1px);
+}
+.attention#{$tooltip}R {
+  @include arrow(left, lighten($colorBlue, 30%), 8px, lighten($colorBlue, 41%), 1px);
+}
+.attention#{$tooltip}T {
+  @include arrow(bottom, lighten($colorBlue, 30%), 8px, lighten($colorBlue, 41%), 1px);
+}
+.attention#{$tooltip}B {
+  @include arrow(top, lighten($colorBlue, 30%), 8px, lighten($colorBlue, 41%), 1px);
+}
+.warn#{$tooltip}L {
+  @include arrow(right, lighten($colorOrange, 30%), 8px, lighten($colorOrange, 45%), 1px);
+}
+.warn#{$tooltip}R {
+  @include arrow(left, lighten($colorOrange, 30%), 8px, lighten($colorOrange, 45%), 1px);
+}
+.warn#{$tooltip}T {
+  @include arrow(bottom, lighten($colorOrange, 30%), 8px, lighten($colorOrange, 45%), 1px);
+}
+.warn#{$tooltip}B {
+  @include arrow(top, lighten($colorOrange, 30%), 8px, lighten($colorOrange, 45%), 1px);
+}
+.error#{$tooltip}L {
+  @include arrow(right, lighten($colorRed, 25%), 8px, lighten($colorRed, 38%), 1px);
+}
+.error#{$tooltip}R {
+  @include arrow(left, lighten($colorRed, 25%), 8px, lighten($colorRed, 38%), 1px);
+}
+.error#{$tooltip}T {
+  @include arrow(bottom, lighten($colorRed, 25%), 8px, lighten($colorRed, 38%), 1px);
+}
+.error#{$tooltip}B {
+  @include arrow(top, lighten($colorRed, 25%), 8px, lighten($colorRed, 38%), 1px);
+}
+.success#{$tooltip}L {
+  @include arrow(right, lighten($colorGreen, 25%), 8px, lighten($colorGreen, 42%), 1px);
+}
+.success#{$tooltip}R {
+  @include arrow(left, lighten($colorGreen, 25%), 8px, lighten($colorGreen, 42%), 1px);
+}
+.success#{$tooltip}T {
+  @include arrow(bottom, lighten($colorGreen, 25%), 8px, lighten($colorGreen, 42%), 1px);
+}
+.success#{$tooltip}B {
+  @include arrow(top, lighten($colorGreen, 25%), 8px, lighten($colorGreen, 42%), 1px);
+}
+.info#{$tooltip}L {
+  @include arrow(right, lighten($colorGray, 35%), 8px, lighten($colorGray, 48%), 1px);
+}
+.info#{$tooltip}R {
+  @include arrow(left, lighten($colorGray, 35%), 8px, lighten($colorGray, 48%), 1px);
+}
+.info#{$tooltip}T {
+  @include arrow(bottom, lighten($colorGray, 35%), 8px, lighten($colorGray, 48%), 1px);
+}
+.info#{$tooltip}B {
+  @include arrow(top, lighten($colorGray, 35%), 8px, lighten($colorGray, 48%), 1px);
+}
+
+blockquote.tip {
+  @include inline-block;
+  u {
+    display: inline-block;
+    text-align: center;
+    &::before {
+      @extend .Icon::before;
+      @extend .Icon.bangzhu1::before;
+    }
+  }
+  q {
+    position: absolute;
+    z-index: 8000;
+    display: none;
+    text-align: left;
+    color: $colorFont;
+    min-width: 200px;
+    &::before {
+      display: none;
+    }
+    & > div {
+      padding: $commonMPwidth;
+    }
+    &.S {min-width: 0;width: 140px;}
+    &.M {width: 320px;}
+    &.L {width: 600px;}
+  }
+  #{$tooltip}T {
+    top: $heightBase;
+    &.S {@include blockcenter(140px, 12px);}
+    &.M {@include blockcenter(300px, 12px);}
+    &.L {@include blockcenter(800px, 12px);}
+  }
+  #{$tooltip}R {
+    top: 0;
+    right: $heightBase - 6;
+  }
+  #{$tooltip}R.B {
+    top: auto;
+    bottom: 0;
+    i {
+      position: absolute;
+      bottom: 4px;
+      right: 5px;
+    }
+  }
+  #{$tooltip}B {
+    bottom: $heightBase;
+    i {
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      margin-left: -8px;
+      top: auto;
+    }
+    &.S {@include blockcenter(140px, 12px);}
+    &.M {@include blockcenter(320px, 12px);}
+    &.L {@include blockcenter(800px, 12px);}
+  }
+  #{$tooltip}L {
+    top: 0;
+    left: $heightBase - 6;
+  }
+  #{$tooltip}L.B {
+    top: auto;
+    bottom: 0;
+    i {
+      position: absolute;
+      bottom: 4px;
+      left: 5px;
+    }
+  }
+  &:hover {
+    position: relative;
+    .alert {
+      display: block;
+    }
+  }
+}
+
+
+
+
+
+

@@ -1,0 +1,795 @@
+/*
+* 布局基础样式
+*
+*/
+
+html {
+  $fontSizeBase: 16px;
+}
+
+@media screen and (min-width: 375px) {
+  html {
+      /* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */
+      $fontSizeBase: calc(100% + 2 * (100vw - 375px) / 39);
+      $fontSizeBase: calc(16px + 2 * (100vw - 375px) / 39);
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+      /* 414px-1000px每100像素宽字体增加1px(18px-22px) */
+      $fontSizeBase: calc(112.5% + 4 * (100vw - 414px) / 586);
+      $fontSizeBase: calc(18px + 4 * (100vw - 414px) / 586);
+  }
+}
+@media screen and (min-width: 600px) {
+  html {
+      /* 600px-1000px每100像素宽字体增加1px(20px-24px) */
+      $fontSizeBase: calc(125% + 4 * (100vw - 600px) / 400);
+      $fontSizeBase: calc(20px + 4 * (100vw - 600px) / 400);
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+      /* 1000px往后是每100像素0.5px增加 */
+      $fontSizeBase: calc(137.5% + 6 * (100vw - 1000px) / 1000);
+      $fontSizeBase: calc(22px + 6 * (100vw - 1000px) / 1000);
+  }
+}
+*,
+*:after,
+*::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+body {
+  background: $colorBg;
+  color: $colorFont;
+}
+
+header {
+  width: 100%;
+  padding-bottom: 2vw;
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  nav {
+    float: right;
+    height: 5vw;
+    width: 5vw;
+    line-height: 5vw;
+    @extend .Icon;
+    @extend .appList;
+    text-align: center;
+    color: $colorMain;
+    font-size: $fontSizeBase * 3;
+    cursor: pointer;
+  }
+  dl {
+    padding: 5vw 5vw 0;
+    dt {
+      float: left;
+      h1 {
+        margin-bottom: 10px;
+        padding: 0;
+        line-height: $fontSizeBase * 3;
+        font-size: $fontSizeBase * 3;
+      }
+      p {
+        display: block;
+        font-size: $fontSizeBase * .8;
+      }
+    }
+    dd {
+      padding: 1vw 0 0 0;
+      display: flex;
+      justify-content: flex-end;
+      font-size: $fontSizeBase;
+      a {
+        margin: 0 15px;
+        padding: 8px;
+        color: $colorMain;
+      }
+    }
+  }
+}
+
+
+/* Menu */
+.overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+  background: rgba($color: $colorMain, $alpha: .9);
+ .close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    outline: none;
+    @extend .Icon;
+    @extend .close;
+    color: #fff;
+    font-size: $fontSizeBase * 3;
+    text-align: center;
+    background: none;
+    border: 0;
+  }
+  nav {
+    position: relative;
+    top: 50%;
+    height: 80vh;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    .mainSeachBar {
+      position: absolute;
+      left: 2vw;
+      top: -7vh;
+      text-align: left;
+      input {
+        padding: 0 1vw;
+        width: 20vw;
+        height: 3vw;
+        background: rgba($color: $colorY, $alpha: .3);
+        border: 0;
+        &::-webkit-input-placeholder {
+          color: #000;
+        }
+      }
+      button {
+        display: none;
+      }
+      &.show {
+        input {
+          width: 70vw;
+        }
+        button {
+          display: inline-block;
+          width: 10vw;
+          height: 10vw;
+          line-height: 10vw;
+          background: #000000;
+          @extend .Icon;
+          @extend .souseo;
+        }
+      }
+    }
+    ul {
+      padding: 5vw;
+      height: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      li {
+        width: 25%;
+        text-align: center;
+        a {
+          display: block;
+          margin: 0 auto;
+          width: 16vw;
+          padding: 3vw 0;
+          font-size: $fontSizeBase * 1.4;
+          font-weight: 300;
+          color: #fff;
+          -webkit-transition: color 0.2s;
+          transition: all 0.2s;
+          background: none;
+          &:hover,
+          &:focus {
+            color: $colorSecond;
+            background: rgba($colorY, $alpha: .3);
+            // background: rgba($color: #000, $alpha: .3);
+            border-radius: .3rem;
+          }
+          i {
+            display: block;
+            margin: 0 auto;
+            margin: 0 auto 1rem;
+            font-size: $fontSizeBase * 4;
+          }
+        }
+        &.guzhi {
+          i {
+            @extend .Icon;
+            @extend .guzhi;
+          }
+        }
+        &.ayi {
+          i {
+            @extend .Icon;
+            @extend .ayi;
+          }
+        }
+        &.yibiaopan {
+          i {
+            @extend .Icon;
+            @extend .yibiaopan;
+          }
+        }
+        &.dindan {
+          i {
+            @extend .Icon;
+            @extend .dindan;
+          }
+        }
+      }
+    }
+  }
+
+  /* Effects */
+  &.overlay-slidedown {
+    visibility: hidden;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out, visibility 0s 0.4s;
+    transition: transform 0.4s ease-in-out, visibility 0s 0.4s;
+  }
+  &.overlay-slidedown.open {
+    visibility: visible;
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
+  }
+}
+
+.container {
+  margin: 5vw;
+  font-size: $fontSizeBase;
+  hgroup {
+    margin: -1px -1px 0;
+    height: 15vw;
+    background: url(../images/slide1_bg2.jpg) center 0 no-repeat;
+    border-bottom: 1px solid $colorBorder;
+    background-size: cover;
+  }
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0px;
+  opacity: 0;
+  background: rgba($color: #000, $alpha: .8);
+  transition: all .2s;
+  font-size: $fontSizeBase * 1.2;
+  &.show {
+    opacity: 1;
+    height: 80px;
+  }
+  dl {
+    dt {
+      float: right;
+      padding: .8rem 1rem 0;
+    }
+    .pages {
+
+    }
+    dd {
+      padding: .8rem 1rem 0;
+      label {
+        margin-right: 1rem;
+        padding: .3rem 1rem;
+        color: $colorY;
+        i {
+          display: inline-block;
+          margin: -3px .5rem 0 0;
+          height: 1.2rem;
+          width: 1.2rem;
+          line-height: calc(1.2rem - 4px);
+          border-radius: 50%;
+          border: 2px solid $colorBorder;
+          @extend .Icon;
+          @extend .Yes;
+          text-align: center;
+          vertical-align: middle;
+          color: $colorBorder;
+          font-weight: 700;
+          cursor: pointer;
+          &::before {
+            line-height: .5rem;
+          }
+          &.Y {
+            color: $colorY;
+            background: $colorGreen;
+            border-color: $colorGreen;
+            &:hover {
+              color: $colorMain;
+              border-color: $colorMain;
+              background: $colorY;
+            }
+            &:active {
+              color: $colorY;
+              border-color: $colorGray;
+              background: $colorGray;
+            }
+          }
+        }
+        &:hover {
+          color: $colorMain;
+          i {
+            color: $colorMain;
+            border-color: $colorMain;
+            &.Y {
+              &:hover {
+                color: $colorY;
+                border-color: rgba($colorMain, .8);
+                background: rgba($colorMain, .8);
+              }
+              &:active {
+                color: $colorY;
+                border-color: $colorGray;
+                background: $colorGray;
+              }
+            }
+          }
+        }
+        &:active {
+          color: $colorY;
+          border-color: $colorGray;
+          background: $colorGray;
+        }
+      }
+    }
+    a {
+      display: inline-block;
+      margin-right: 1rem;
+      padding: .3rem 1rem;
+      border: 2px solid #fff;
+      color: #fff;
+      &:hover {
+        color: $colorMain;
+        border-color: $colorMain;
+      }
+      &:active {
+        color: $colorFont;
+        border-color: $colorGray;
+        background: $colorGray;
+      }
+    }
+  }
+}
+.pageD {
+  border: 1px solid $colorBorder;
+  hgroup {
+    dl {
+      height: inherit;
+      dt {
+        display: flex;
+        padding-left: 3vw;
+        height: inherit;
+        align-items: center;
+        img {
+          margin: 0;
+          height: 5vw;
+          width: 5vw;
+          border-radius: 50%;
+          border: 2px solid rgba($color: #000000, $alpha: .5);
+          vertical-align: middle;
+        }
+        h1 {
+          align-items: center;
+          margin: 0 0 0 1vw;
+          vertical-align: middle;
+          font-size: $fontSizeBase * 2;
+          line-height: $fontSizeBase * 2;
+          color: rgba($color: #000000, $alpha: .8);
+          span {
+            display: block;
+            padding-top: .2vw;
+            font-size: $fontSizeBase * .8;
+          }
+        }
+      }
+      dd {
+        float: right;
+        width: 40%;
+        h2 {
+          padding: 1rem;
+          text-align: right;
+          letter-spacing: 5px;
+          font-size: $fontSizeBase * 3;
+          line-height: 2rem;
+          color: rgba($color: #000000, $alpha: .3);
+          i {
+            float: right;
+            margin-left: .5rem;
+            font-size: $fontSizeBase * 2.5;
+          }
+        }
+        h4 {
+          display: table-cell;
+          padding: 1rem 1rem 0;
+          height: calc(11rem - 5rem);
+          vertical-align: bottom;
+          text-indent: - $fontSizeBase * .8 * 3;
+          font-size: $fontSizeBase * .8;
+          line-height: $fontSizeBase * 2;
+          color: rgba($color: #000000, $alpha: .5);
+          text-shadow: 0 0 3px #fff;
+        }
+      }
+    }
+  }
+  .SectionM {
+    padding: 2rem;
+    border-bottom: 1px solid $colorBorder;
+    .form.column3 {
+      border: 0;
+      li {
+        padding-left: calc($fontSizeBase * 8 + 1rem);
+        padding-right: 2rem;
+      }
+    }
+  }
+  .SectionN {
+    padding: 2rem;
+    border-bottom: 1px solid $colorBorder;
+    ul {
+      li {
+        padding: $commonMPwidth 0;
+        h6 {
+          font-weight: 700;
+        }
+        p {
+          line-height: $fontSizeBase * 2;
+          color: $colorGray;
+        }
+      }
+    }
+  }
+  .SectionB {
+    padding: 2rem;
+    border-bottom: 1px solid $colorBorder;
+    ul {
+      display: flex;
+      margin: 0 -$commonMPwidth;
+      li {
+        padding: $commonMPwidth;
+        img {
+          width: 12rem;
+          height: 9rem;
+        }
+      }
+    }
+  }
+  .pageTool {
+    padding: 2rem;
+    dl {
+      overflow: hidden;
+      dt {
+        float: right;
+        a {
+          padding: $commonMPwidth 2rem;
+        }
+      }
+      dd {
+
+      }
+    }
+  }
+}
+.listM {
+  @include flex;
+  margin:  2vw 4.5vw;
+  dl {
+    position: relative;
+    margin: .5vw;
+    width: 17.2vw;
+    border: 1px solid $colorBorder;
+    dt {
+      padding-bottom: 1vw;
+      text-align: center;
+      label,b {
+        position: absolute;
+        left: 1vw;
+        top: 1vw;
+        height: 2vw;
+        width: 2vw;
+        line-height: 2vw;
+        border-radius: 50%;
+        border: 1px solid $colorBorder;
+        @extend .Icon;
+        @extend .Yes;
+        text-align: center;
+        color: $colorBorder;
+        font-weight: 700;
+        cursor: pointer;
+        &:hover {
+          color: $colorMain;
+          border-color: $colorMain;
+        }
+        &:active {
+          color: $colorY;
+          border-color: $colorGray;
+          background: $colorGray;
+        }
+        &.Y {
+          color: $colorY;
+          background: $colorGreen;
+          border-color: $colorGreen;
+          &:hover {
+            color: $colorY;
+            border-color: rgba($colorMain, .8);
+            background: rgba($colorMain, .8);
+          }
+          &:active {
+            color: $colorY;
+            border-color: $colorGray;
+            background: $colorGray;
+          }
+        }
+      }
+      b {
+        background: $colorGray;
+        border: 1px solid $colorGray;
+        right: .5rem;
+        left: auto;
+        @extend .phone;
+        color: $colorY;
+        &:hover {
+          background: $colorMain;
+          border-color: $colorMain;
+          color: $colorY;
+        }
+        &:active {
+          color: $colorGray;
+          border-color: $colorGray;
+          color: $colorY;
+        }
+      }
+      img {
+        margin: 3vw auto 1vw;
+        padding: .1rem;
+        width: 10vw;
+        height: 10vw;
+        border-radius: 50%;
+        border: 1px solid $colorBorder;
+      }
+      h6 {
+        padding-bottom: 1vw;
+      }
+      p {
+        font-size: $fontSizeBase * .8;
+        line-height: $fontSizeBase * 1.5;
+        height: $fontSizeBase * 3;
+        color: $colorGray;
+        overflow: hidden;
+      }
+    }
+    dd {
+      padding: .5rem;
+      height: 3rem;
+      background: $colorBgSec;
+      img {
+        float: right;
+        margin: 0;
+        width: 2rem;
+        height: 2rem;
+        border: 1px solid $colorBorder;
+      }
+      p {
+        line-height: $fontSizeBase * 1.5;
+        font-size: $fontSizeBase * .8;
+        color: $colorGray;
+        samp {
+          color: $colorMain;
+        }
+      }
+    }
+  }
+}
+.listModular {
+  @include flex;
+  margin:  1vw 4.5vw;
+  dl {
+    position: relative;
+    margin: .5vw;
+    padding-bottom: 2rem;
+    width: calc(12vw);
+    border: 1px solid $colorBorder;
+    dt {
+      padding: .1rem;
+      text-align: center;
+      height: calc(100% - 1.5rem);
+      label {
+        position: absolute;
+        left: 1vw;
+        top: 1vw;
+        height: 2vw;
+        width: 2vw;
+        line-height: 2vw;
+        border-radius: 50%;
+        border: 1px solid $colorBorder;
+        @extend .Icon;
+        @extend .Yes;
+        text-align: center;
+        color: $colorBorder;
+        font-weight: 700;
+        cursor: pointer;
+        &:hover {
+          color: $colorMain;
+          border-color: $colorMain;
+        }
+        &:active {
+          color: $colorY;
+          border-color: $colorGray;
+          background: $colorGray;
+        }
+        &.Y {
+          color: $colorY;
+          background: $colorGreen;
+          border-color: $colorGreen;
+          &:hover {
+            color: $colorY;
+            border-color: rgba($colorMain, .8);
+            background: rgba($colorMain, .8);
+          }
+          &:active {
+            color: $colorY;
+            border-color: $colorGray;
+            background: $colorGray;
+          }
+        }
+      }
+      img {
+        width: 100%;
+        height: calc(12vw - .1rem);
+      }
+      i {
+        display: block;
+        width: 100%;
+        height: calc(12vw - .1rem);
+        text-align: center;
+        font-size: $fontSizeBase * 5;
+        &::before {
+          margin-top: 2.5vw;
+        }
+        @extend .Icon;
+        @extend .gongji;
+      }
+      h6 {
+        position: relative;
+        margin-top: -2rem;
+        height: 2rem;
+        line-height: 2rem;
+        background: rgba($color: #000, $alpha: .5);
+        color: $colorY;
+      }
+      p {
+        display: none;
+        font-size: $fontSizeBase * .8;
+        line-height: $fontSizeBase * 1.5;
+        height: $fontSizeBase * 1.5;
+        color: $colorGray;
+        overflow: hidden;
+      }
+    }
+    dd {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: .2rem .5rem;
+      height: 2rem;
+      div {
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        height: 1rem;
+        width: 1rem;
+        line-height: 1rem;
+        border-radius: 50%;
+        color: $colorGray;
+        @extend .Icon;
+        @extend .arrowD;
+        font-weight: 700;
+        font-size: $fontSizeBase * .5;
+        background: $colorBgSec;
+        border: 1px solid $colorBgSec;
+        a {
+          display: none;
+        }
+        &::before {
+          float: right;
+          margin: .2rem .2rem;
+        }
+        &.open {
+          background: #fff;
+          border-color: $colorBorder;
+          width: 6rem;
+          height: auto;
+          border-radius: 2px;
+          z-index: 9000;
+          background: $colorY;
+          overflow: hidden;
+          &::before{
+            transform: rotate(90deg);
+          }
+          p {
+            margin-top: .8rem;
+            padding: .2rem .5rem;
+            font-weight: normal;
+            // border-top: 1px solid $colorBorder;
+            a {
+              display: block;
+              line-height: $fontSizeBase * 2;
+              color: $colorMain;
+            }
+          }
+        }
+      }
+      p {
+        line-height: $fontSizeBase * 1.5;
+        font-size: $fontSizeBase * .8;
+        color: $colorGray;
+        samp {
+          color: $colorMain;
+        }
+      }
+    }
+    &.add {
+      border: 0;
+      a {
+        display: block;
+        margin: 3vw auto 0;
+        width: 8vw;
+        height: 8vw;
+        line-height: 8vw;
+        text-align: center;
+        border: 1px solid $colorBorder;
+        color: $colorBorder;
+        @extend .Icon;
+        @extend .jiahao;
+        font-size: $fontSizeBase * 4;
+        // background: #f60;
+        &:hover,&:visited {
+          color: $colorY;
+          background: $colorMain;
+          border-color: $colorMain;
+        }
+        &:active {
+          color: $colorFont;
+          background: $colorGray;
+          border-color: $colorGray;
+        }
+      }
+    }
+  }
+}
+
+.sl {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  i {
+    width: calc(1rem - 2px);
+    height: calc(1rem - 2px);
+    border: 1px solid #000000;
+    &:nth-child(10n) {
+      border-color: #f60;
+    }
+  }
+  b {
+    width: 10vw;
+    height: 10vw;
+    border: 1px solid #000000;
+    &:nth-child(10n) {
+      border-color: #f60;
+    }
+  }
+}
+
+
+

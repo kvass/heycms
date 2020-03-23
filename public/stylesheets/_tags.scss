@@ -1,0 +1,68 @@
+/*
+* 标签样式
+*
+* 全局式的标签样式
+*/
+
+
+$stepsHeight : 32px;
+
+$stepsColor : #3e86cd #f1f1f1 #999;
+
+.tag {
+  @include inline-block;
+  margin: 0 3px;
+  padding: 9px 8px 7px;
+  border-radius: $borderRadius;
+  text-align: center;
+  vertical-align: baseline;
+  font-family: Helvetica, Microsoft Yahei, WenQuanYi Micro Hei, sans-serif;
+  line-height: 1px;
+  background: #f1f1f1;
+  color: #333;
+  &.tagRed,&.error {
+    background: $colorRed;
+    color: #fff;
+  }
+  &.tagGreen,&.success {
+    background: $colorGreen;
+    color: #fff;
+  }
+  &.tagOrange,&.warn {
+    background: $colorOrange;
+    color: #fff;
+  }
+  &.tagBlue,&.attention {
+    background: $colorBlue;
+    color: #fff;
+  }
+}
+a.tag {
+  cursor: pointer;
+  &.link {
+    padding: 8px 7px 6px;
+    border: 1px solid $colorMain;
+    background: $colorBg;
+    color: $colorMain!important;
+    &:hover {
+      background: $colorMain;
+      color: #fff!important;
+    }
+    &:active {
+      @extend %active;
+    }
+  }
+  &.tagRed,&.error {
+    color: #fff!important;
+    &:hover {
+      background: lighten($colorRed, 10%);
+    }
+    &:active {
+      @extend %active;
+    }
+  }
+}
+
+
+
+
